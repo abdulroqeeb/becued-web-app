@@ -8,7 +8,6 @@ import VerifyAccount from "./components/pages/auth/VerifyAccount";
 import SetPassword from "./components/pages/auth/SetPassword";
 import AddBirthday from "./components/pages/auth/AddBirthday";
 import AccountCreated from "./components/pages/auth/AccountCreated";
-import Header from "./components/includes/Header";
 
 
 
@@ -26,7 +25,6 @@ function App() {
 
 
       {/* For Authenticated Screens */}
-      <Header />
       <Routes>
         <Route exact path="/home" element={<Home />} />
       </Routes>
