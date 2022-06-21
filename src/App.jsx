@@ -8,7 +8,7 @@ import VerifyAccount from "./components/pages/auth/VerifyAccount";
 import SetPassword from "./components/pages/auth/SetPassword";
 import AddBirthday from "./components/pages/auth/AddBirthday";
 import AccountCreated from "./components/pages/auth/AccountCreated";
-
+import { RedirectToLogin } from "./components/pages/RedirectToLogin";
 
 
 function App() {
@@ -21,13 +21,15 @@ function App() {
         <Route exact path="/set-password" element={<SetPassword />} />
         <Route exact path="/add-birthday" element={<AddBirthday />} />
         <Route exact path="/account-created" element={<AccountCreated />} />
-      </Routes>
 
 
-      {/* For Authenticated Screens */}
-      <Routes>
-        <Route exact path="/home" element={<Home />} />
+        {/* For Authenticated Screens */}
+        <Route element={<RedirectToLogin />} >
+          <Route exact path="/home" element={<Home />} />
+        </Route>
+
       </Routes>
+
 
     </Router>
 

@@ -236,3 +236,30 @@ input:focus {
     height: 120px;
     border-radius: 10%;
   }
+
+  .becuedtoFollow{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  .becuedtoFollowicon{
+        width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+
+
+  .becueddetailImage{
+    width: 56px;
+    height: 56px;
+  }
+
+  .feedContentReaction > span.active{
+    color: #F960F9;
+  }
+
+  i.active{
+    color: #F960F9;
+  }

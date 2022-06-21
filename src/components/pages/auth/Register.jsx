@@ -15,17 +15,17 @@ function Register() {
 
                         <form action="#" method="post">
                             <div className="mb-4">
-                                <label for="fullname" className="form-label text-white">Full Name</label>
+                                <label htmlFor="fullname" className="form-label text-white">Full Name</label>
                                 <input type="text"
                                     className="form-control inputField" name="fullname" placeholder="Enter your name" />
                             </div>
                             <div className="mb-4">
-                                <label for="username" className="form-label text-white">Username</label>
+                                <label htmlFor="username" className="form-label text-white">Username</label>
                                 <input type="text"
                                     className="form-control inputField" name="username" placeholder="Enter your username" />
                             </div>
                             <div className="mb-4">
-                                <label for="email" className="form-label text-white">Email</label>
+                                <label htmlFor="email" className="form-label text-white">Email</label>
                                 <input
 
                                     type="email" className="form-control inputField" name="email" id="talentemail"
