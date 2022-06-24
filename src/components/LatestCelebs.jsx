@@ -1,11 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function LatestCelebs() {
+
+
+
+
     return (
         <div className="card mb-5">
 
             <div className="card-body">
                 <h5 className="card-title mb-5">Latest Celebrities</h5>
+
 
                 <div className="row">
                     <div className="col-md-6">
@@ -18,10 +24,10 @@ function LatestCelebs() {
                         <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Zora Mendy</p>
                         <small style={{ position: "relative", bottom: "10%", fontSize: "10px", color: "#f3f3f3" }}>Music • Celebrities</small>
                     </div>
-
-                    <a href="#" style={{ color: "#FD9B8A", textDecoration: "underline", fontSize: "12px" }}>See All</a>
-
                 </div>
+
+                <Link to="/discover" style={{ color: "#FD9B8A", textDecoration: "underline", fontSize: "12px" }}>See All</Link>
+
 
             </div>
         </div>

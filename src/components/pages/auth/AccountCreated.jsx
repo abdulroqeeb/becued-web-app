@@ -1,7 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Wallpaper from "../../Wallpaper";
-
-
 
 
 function AccountCreated() {
@@ -32,12 +31,12 @@ function AccountCreated() {
                         <br />
                         <br />
                         <div className="mb-4">
-                            <button type="button" className="btn btn-block buttonStyles"
-                            >Add your interests</button>
+                            <Link to={'/add-interest'} type="button" className="btn btn-block buttonStyles"
+                            >Add your interests</Link>
 
                         </div>
 
-                        <p className="text-center"><a style={{ color: 'white', textDecoration: 'none', fontSize: '16px', lineHeight: '10.36' }} href="http://">Skip for now</a></p>
+                        <p className="text-center"><Link style={{ color: 'white', textDecoration: 'none', fontSize: '16px', lineHeight: '10.36' }} to={'/home'}>Skip for now</Link></p>
 
                     </div>
                 </div>

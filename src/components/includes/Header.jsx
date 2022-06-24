@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg fixed-top" style={{ background: "#150829" }}>
                 <div className="container">
-                    <a className="navbar-brand" href="/home">
+                    <Link className="navbar-brand" to="/home">
                         <img src="https://res.cloudinary.com/becued-technologies/image/upload/v1655308151/becued/assets/Group_274_xds6j2.svg" alt="" width="30" height="24" />
-                    </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -24,9 +25,9 @@ function Header() {
 
                         <ul className="navbar-nav d-flex mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active text-white position-relative" aria-current="page" href=""><i className="fa fa-bell-o" aria-hidden="true" style={{ fontSize: '30px' }}></i><span className="position-absolute badge translate-middle notified">
+                                <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification"><i className="fa fa-bell-o" aria-hidden="true" style={{ fontSize: '30px' }}></i><span className="position-absolute badge translate-middle notified">
                                     3
-                                </span> </a>
+                                </span> </Link>
 
 
                             </li>
@@ -45,7 +46,7 @@ function Header() {
                                     <li><a className="dropdown-item" href=""><img alt="password" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/password_rnj6jj.png" /> Change Password</a></li>
                                     <li><a className="dropdown-item" href=""><img alt="ref_promo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/ref_promo_efs6ao.png" /> Referral and Promotions</a></li>
                                     <li><a className="dropdown-item" href=""><img alt="promo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/promo_gt7q8i.png" /> Promotions</a></li>
-                                    <li><a className="dropdown-item" href=""><img alt="reviews" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/review_o26fzu.png" /> Reviews</a></li>
+                                    <li><Link className="dropdown-item" to="/reviews"><img alt="reviews" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/review_o26fzu.png" /> Reviews</Link></li>
                                     <li><a className="dropdown-item" href=""><img alt="payment" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/payment_cslexd.png" /> Payment</a></li>
                                     <li><hr className="dropdown-divider" /></li>
                                     <li><a className="dropdown-item" href=""><img alt="logout" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/logout_rhteoc.png" /> Logout</a></li>

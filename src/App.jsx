@@ -9,6 +9,10 @@ import SetPassword from "./components/pages/auth/SetPassword";
 import AddBirthday from "./components/pages/auth/AddBirthday";
 import AccountCreated from "./components/pages/auth/AccountCreated";
 import { RedirectToLogin } from "./components/pages/RedirectToLogin";
+import Notification from "./components/pages/main/Notification";
+import Reviews from "./components/pages/main/Reviews";
+import Discover from "./components/pages/main/Discover";
+import AddInterest from "./components/pages/auth/AddInterest";
 
 
 function App() {
@@ -20,7 +24,11 @@ function App() {
         <Route exact path="/verify-account" element={<VerifyAccount />} />
         <Route exact path="/set-password" element={<SetPassword />} />
         <Route exact path="/add-birthday" element={<AddBirthday />} />
+        <Route exact path="/add-interest" element={<AddInterest />} />
         <Route exact path="/account-created" element={<AccountCreated />} />
+        <Route exact path="/notification" element={<Notification />} />
+        <Route exact path="/reviews" element={<Reviews />} />
+        <Route exact path="/discover" element={<Discover />} />
 
 
         {/* For Authenticated Screens */}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Wallpaper from "../../Wallpaper";
 
 function Register() {
@@ -36,8 +37,8 @@ function Register() {
                             <br />
                             <br />
                             <div className="mb-4">
-                                <button type="button" className="btn btn-block buttonStyles"
-                                >Next</button>
+                                <Link to="/verify-account" type="button" className="btn btn-block buttonStyles"
+                                >Next</Link>
 
                             </div>
 

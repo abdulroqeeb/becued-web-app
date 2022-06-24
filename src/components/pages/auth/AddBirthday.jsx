@@ -1,8 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Wallpaper from "../../Wallpaper";
-
-
-
 
 function AddBirthday() {
 
@@ -43,8 +41,8 @@ function AddBirthday() {
                             <br />
                             <br />
                             <div className="mt-5 mb-4">
-                                <button type="button" className="btn btn-block buttonStyles"
-                                >Save</button>
+                                <Link to={'/account-created'} type="button" className="btn btn-block buttonStyles"
+                                >Save</Link>
 
                             </div>
 

@@ -231,6 +231,53 @@ input:focus {
     height: 120px;
     border-radius: 10%;
   }
+  .becuedaddInterest{
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 10%;
+  }
+  .becuedReviews{
+   height: 202px;
+width: 210px;
+border-radius: 16px;
+object-fit: cover;
+
+  }
+
+
+  .fa-star {
+    font-size: 12px;
+  }
+  .fa-star.active {
+    color: #FADB14;
+  }
+
+
+  .becuedDiscoverImages{
+    width: 180px;
+    height: 180px;
+    border-radius: 16px;
+  }
+
+
+  .becuedDiscoveryCategories{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .discoverCategoryList{
+    display: inline-flex;
+    flex-direction: row;
+    list-style: none;
+  }
+
+.discoverCategoryList li{
+  margin-left: 5px;
+}
+
+
   .becuedCelebs{
     width: 100%;
     height: 120px;
@@ -255,6 +302,12 @@ input:focus {
     width: 56px;
     height: 56px;
   }
+
+   .feedContentReaction > span{
+    position: relative;
+    right: 15px;
+    font-size: 15px;
+   }
 
   .feedContentReaction > span.active{
     color: #F960F9;
