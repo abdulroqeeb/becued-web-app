@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Wallpaper from '../../Wallpaper';
 
 const VerifyAccount = () => {
@@ -14,8 +13,6 @@ const VerifyAccount = () => {
 
         if (element.nextSibling) {
             element.nextSibling.focus();
-
-
         }
         else {
             window.location.href = '/set-password';

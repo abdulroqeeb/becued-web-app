@@ -316,3 +316,15 @@ object-fit: cover;
   i.active{
     color: #F960F9;
   }
+
+  .signinIcon{
+    font-size: 23px;
+  }
+  .socialSignInBtn{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .socialSignInBtn:hover{
+    background: linear-gradient(180deg, #FEAD67 0%, #F960F9 100%) !important;
+    color: #fff !important;
+  }
