@@ -15,15 +15,12 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [btnText, setBtnText] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
     }, []);
 
     useEffect(() => {
-        setErrMsg('');
         setBtnText('Login');
     }, [email, password]);
 
@@ -45,7 +42,6 @@ function Login() {
             setEmail('');
             setPassword('');
             setBtnText('Login');
-            setSuccess(true);
             showMessage('Great!', `Welcome back ${response.data?.data.fullname}`, '#291743');
 
             setTimeout(() => {
@@ -53,7 +49,6 @@ function Login() {
             }, 1000);
 
         } catch (error) {
-            console.log(error.response);
             setBtnText('Login');
             if (!error.response.data) {
                 showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
