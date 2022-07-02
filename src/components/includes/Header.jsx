@@ -17,7 +17,7 @@ function Header() {
                         <form className="d-flex" role="search">
                             <div className="input-group">
                                 <input type="text" className="form-control inputSearch" placeholder="Search celebrity..." aria-label="Search celebrity..." />
-                                <span className="input-group-text"><img src='https://res.cloudinary.com/becued-technologies/image/upload/v1655802887/becued/assets/Filter_vqahjl.png' /></span>
+                                <span className="input-group-text"><img src='https://res.cloudinary.com/becued-technologies/image/upload/v1655802887/becued/assets/Filter_vqahjl.png' alt='filter' /></span>
                             </div>
                         </form>
 
@@ -32,24 +32,24 @@ function Header() {
 
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" href="">
+                                <Link className="nav-link text-white" to={""}>
                                     <center><img className="becuedLogo" alt="becuedLogo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1648834845/becued/assets/defaultavatar_hvnbmv.svg" /></center>
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link text-white mt-1" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: '16px', fontWeight: '600' }}>
+                                <Link className="nav-link text-white mt-1" to={""} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: '16px', fontWeight: '600' }}>
                                     Anayo Obiajulu <i className="fa fa-chevron-down px-2" aria-hidden="true" style={{ fontSize: '13px', fontWeight: '600' }}></i>
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown" style={{ background: "#150829" }}>
-                                    <li><a className="dropdown-item" href=""><img alt="profile" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/Profile_pzhqsj.png" /> Profile Information</a></li>
-                                    <li><a className="dropdown-item" href=""><img alt="video" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/videos_ikm088.png" /> My Videos</a></li>
-                                    <li><a className="dropdown-item" href=""><img alt="password" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/password_rnj6jj.png" /> Change Password</a></li>
-                                    <li><a className="dropdown-item" href=""><img alt="ref_promo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/ref_promo_efs6ao.png" /> Referral and Promotions</a></li>
-                                    <li><a className="dropdown-item" href=""><img alt="promo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/promo_gt7q8i.png" /> Promotions</a></li>
+                                    <li><Link className="dropdown-item" to={"/profile"}><img alt="profile" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/Profile_pzhqsj.png" /> Profile Information</Link></li>
+                                    <li><Link className="dropdown-item" to={"/videos"}><img alt="video" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/videos_ikm088.png" /> My Videos</Link></li>
+                                    <li><Link className="dropdown-item" to={"/change-password"}><img alt="password" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/password_rnj6jj.png" /> Change Password</Link></li>
+                                    <li><Link className="dropdown-item" to={""}><img alt="ref_promo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/ref_promo_efs6ao.png" /> Referral and Promotions</Link></li>
+                                    <li><Link className="dropdown-item" to={""}><img alt="promo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/promo_gt7q8i.png" /> Promotions</Link></li>
                                     <li><Link className="dropdown-item" to="/reviews"><img alt="reviews" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/review_o26fzu.png" /> Reviews</Link></li>
-                                    <li><a className="dropdown-item" href=""><img alt="payment" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/payment_cslexd.png" /> Payment</a></li>
+                                    <li><Link className="dropdown-item" to={"/payment"}><img alt="payment" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/payment_cslexd.png" /> Payment</Link></li>
                                     <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href=""><img alt="logout" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/logout_rhteoc.png" /> Logout</a></li>
+                                    <li><Link className="dropdown-item" to={"/login"}><img alt="logout" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/logout_rhteoc.png" /> Logout</Link></li>
                                 </ul>
                             </li>
 

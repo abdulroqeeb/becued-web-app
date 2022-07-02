@@ -9,7 +9,7 @@ function AccountCreated() {
     return (
         <div className="formBox">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 disp-large">
                     <Wallpaper />
                 </div>
                 <div className="col-md-6">
@@ -22,7 +22,7 @@ function AccountCreated() {
 
 
                         <h1>Account Created</h1>
-                        <p className="text-center" style={{ paddingLeft: '100px', paddingRight: '100px' }}>Welcome to Becued.
+                        <p className="text-center">Welcome to Becued.
                             Connect with your favourite personalities.
                             Plus you get to explore our awesome features</p>
 

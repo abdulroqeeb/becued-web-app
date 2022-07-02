@@ -328,3 +328,124 @@ object-fit: cover;
     background: linear-gradient(180deg, #FEAD67 0%, #F960F9 100%) !important;
     color: #fff !important;
   }
+
+
+      .boxItem {
+        width: 100% !important;
+        background-image: none;
+        padding: 50px 10px;
+        background-color: #150829;
+        height: auto;
+        position: relative;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .swiper-slide {
+        width: 80%;
+    }
+
+
+
+    .mySwiper {
+        height: auto;
+        object-fit: cover;
+        background-color: transparent;
+        justify-content: center;
+    }
+
+    .videowrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .videowrapper>img {
+        height: 100%;
+    }
+
+    .celebImage {
+        height: 69px;
+        width: 69px;
+        border-radius: 50000px;
+    }
+
+    .celebName {
+      font-family: Inter;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 39px;
+
+    }
+    
+
+    .star>span {
+        font-size: 14px;
+        height: 17px;
+        width: 21px;
+        left: 891px;
+        top: 129px;
+
+    }
+
+    .btn {
+        /* height: 56px; */
+        /* width: 200px; */
+        left: 0px;
+        top: 0px;
+        border-radius: 8px;
+        color: #fff;
+        margin-top: 30px;
+
+    }
+
+    .btnBook {
+        background: linear-gradient(128.3deg, #FEAD67 -22.92%, #F960F9 113.94%);
+        width: 100% !important;
+        border: none;
+    }
+    .btnBook:hover {
+        background: linear-gradient(128.3deg, #F960F9 -22.92%, #5B6BFD 113.94%);
+        width: 100% !important;
+        color: #fff;
+    }
+
+    .btnFollow {
+        background: #5B6BFD;
+        border: none;
+        width: 100% !important;
+    }
+
+    .btnFollow:hover {
+        background: linear-gradient(128.3deg, #5B6BFD -22.92%, #F960F9 113.94%);
+        width: 100% !important;
+        color: #fff;
+    }
+
+    .modal-content {
+        height: inherit !important;
+        background: #150929;
+    }
+
+    .play-btn {
+    position: relative;
+    cursor: pointer;
+    z-index: 1000000000;
+    margin: 0 auto;
+    display: block;
+    top: 290px;
+}
+
+@media (max-width: 767px){
+  .disp-large{
+    display: none;
+  }
+  .myInfo {
+    text-align: center;
+}
+}

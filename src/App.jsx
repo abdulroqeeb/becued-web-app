@@ -15,6 +15,11 @@ import Discover from "./components/pages/main/Discover";
 import AddInterest from "./components/pages/auth/AddInterest";
 import ForgotPassword from "./components/pages/auth/ForgotPassword";
 import ResetPassword from "./components/pages/auth/ResetPassword";
+import ArtisteProfile from "./components/pages/main/ArtisteProfile";
+import ShoutOut from "./components/pages/main/ShoutOut";
+import MyProfile from "./components/pages/main/MyProfile";
+import ChangePassword from "./components/pages/main/ChangePassword";
+import Payment from "./components/pages/main/Payment";
 
 
 function App() {
@@ -30,15 +35,23 @@ function App() {
         <Route exact path="/add-birthday" element={<AddBirthday />} />
         <Route exact path="/add-interest" element={<AddInterest />} />
         <Route exact path="/account-created" element={<AccountCreated />} />
-        <Route exact path="/notification" element={<Notification />} />
-        <Route exact path="/reviews" element={<Reviews />} />
-        <Route exact path="/discover" element={<Discover />} />
 
 
         {/* For Authenticated Screens */}
         <Route element={<RedirectToLogin />} >
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" />
         </Route>
+        {/* PROTECTED ROUTES */}
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/artiste" element={<ArtisteProfile />} />
+        <Route exact path="/videos" element={<ShoutOut />} />
+        <Route exact path="/profile" element={<MyProfile />} />
+        <Route exact path="/change-password" element={<ChangePassword />} />
+        <Route exact path="/payment" element={<Payment />} />
+
+        <Route exact path="/notification" element={<Notification />} />
+        <Route exact path="/reviews" element={<Reviews />} />
+        <Route exact path="/discover" element={<Discover />} />
 
       </Routes>
 

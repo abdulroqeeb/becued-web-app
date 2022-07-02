@@ -25,9 +25,9 @@ function PostFeeds(props) {
 
 
                 <div className="feedContentReaction mt-3">
-                    <i class="fa fa-heart px-2 py-1 active" aria-hidden="true"></i><span class="badge active">533</span>
-                    <i class="fa fa-comment-o px-2 py-1" aria-hidden="true"></i><span class="badge">42</span>
-                    <i class="fa fa-share px-2 py-1" aria-hidden="true"></i><span class="badge">9</span>
+                    <i className="fa fa-heart px-2 py-1 active" aria-hidden="true"></i><span className="badge active">533</span>
+                    <i className="fa fa-comment-o px-2 py-1" aria-hidden="true"></i><span className="badge">42</span>
+                    <i className="fa fa-share px-2 py-1" aria-hidden="true"></i><span className="badge">9</span>
                 </div>
 
             </div>

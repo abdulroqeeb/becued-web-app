@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CategoryList from '../CategoryList';
 import Header from '../includes/Header';
 import LatestCelebs from '../LatestCelebs';

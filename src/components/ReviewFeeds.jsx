@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 function ReviewFeeds() {
     return (
@@ -11,7 +11,7 @@ function ReviewFeeds() {
                 <p><i className="fa fa-star active"></i><i className="fa fa-star active"></i><i className="fa fa-star active"></i><i className="fa fa-star active"></i><i className="fa fa-star"></i></p>
                 <p>Trevor Noah is a South African comedian, television host, producer, writer, political commentator, and actor. He is the host of The Daily Show, an American satirical news program on Comedy Central. Born in Johannesburg, Noah began his career as a comedian, television host, and actor in South Africa in 2002.</p>
 
-                <a href="#" style={{ color: "#FD9B8A", textDecoration: "underline", fontSize: "12px" }}>Read more</a>
+                <Link to={""} style={{ color: "#FD9B8A", textDecoration: "underline", fontSize: "12px" }}>Read more</Link>
 
             </div>
         </div>
