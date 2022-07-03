@@ -16,7 +16,7 @@ function Home() {
 
             <div className="container mt-5 mb-5" style={{ paddingTop: '50px' }}>
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-3 disp-large">
                         <MyDetails />
 
                         <CategoryList />

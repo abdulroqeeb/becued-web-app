@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function ReviewFeeds() {
     return (
-        <div className="row">
+        <div className="row mb-5">
             <div className="col-md-2">
                 <img className="becuedReviews px-2 py-2" alt="becuedreviews" src="https://res.cloudinary.com/becued-technologies/image/upload/v1654719726/becued/assets/WhatsApp_Image_2022-06-07_at_11.20_1_gbzswy.svg" />
             </div>

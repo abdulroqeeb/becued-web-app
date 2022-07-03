@@ -9,8 +9,8 @@ function PostFeeds(props) {
                         <img className="becueddetailImage" alt="becueddetailImage" src={props.avatar} />
                     </div>
                     <div className="col-md-10">
-                        <p style={{ position: "relative", right: "7%", fontSize: "16px", fontWeight: "500" }}>{props.fullname}</p>
-                        <small style={{ position: "relative", bottom: "25%", right: "7%", fontSize: "14px", color: "#5F5B65" }}>{props.time}</small>
+                        <p style={{ position: "relative", right: "3%", fontSize: "16px", fontWeight: "500" }}>{props.fullname}</p>
+                        <small style={{ position: "relative", bottom: "25%", right: "3%", fontSize: "14px", color: "#5F5B65" }}>{props.time}</small>
                     </div>
                 </div>
 

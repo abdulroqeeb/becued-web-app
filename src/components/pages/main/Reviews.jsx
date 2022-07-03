@@ -17,6 +17,8 @@ function Reviews() {
                         <h5 className="card-title mb-3">Reviews</h5>
 
                         <ReviewFeeds />
+                        <ReviewFeeds />
+                        <ReviewFeeds />
 
                     </div>
 

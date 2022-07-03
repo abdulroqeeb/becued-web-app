@@ -20,6 +20,7 @@ import ShoutOut from "./components/pages/main/ShoutOut";
 import MyProfile from "./components/pages/main/MyProfile";
 import ChangePassword from "./components/pages/main/ChangePassword";
 import Payment from "./components/pages/main/Payment";
+import EditProfile from "./components/pages/main/EditProfile";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route exact path="/artiste" element={<ArtisteProfile />} />
         <Route exact path="/videos" element={<ShoutOut />} />
         <Route exact path="/profile" element={<MyProfile />} />
+        <Route exact path="/profile/edit" element={<EditProfile />} />
         <Route exact path="/change-password" element={<ChangePassword />} />
         <Route exact path="/payment" element={<Payment />} />
 

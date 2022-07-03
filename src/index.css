@@ -441,6 +441,24 @@ object-fit: cover;
     top: 290px;
 }
 
+.becuedProfileAvatar{
+  width: 100px;
+  height: 100px
+}
+
+.tablisting a{
+  background: transparent !important;
+    border: none !important;
+    color: #A3A4B2;
+}
+
+.tablisting > a.active{
+  background: transparent !important;
+        color: #fa6be6 !important;
+        border-bottom: 1px solid #fa6be6 !important;
+}
+
+
 @media (max-width: 767px){
   .disp-large{
     display: none;
