@@ -76,7 +76,7 @@ function ArtisteProfile() {
                                                 <span style={{ fontSize: "13px", color: "#fff" }}> 5.0
                                                 </span></small>
                                             <br />
-                                            <Link className="mt-3" to="" style={{ fontSize: "12px", color: "#CACBD3" }}>See All Reviews</Link>
+                                            <Link to={"/reviews"} className="mt-3" style={{ fontSize: "12px", color: "#CACBD3" }}>See All Reviews</Link>
                                         </div>
 
 
@@ -102,10 +102,10 @@ function ArtisteProfile() {
                                         <div className="row">
 
                                             <div className="col-md-6">
-                                                <button className="btn btn-sm btnBook buttonStyles">
+                                                <Link to={"/booking"} className="btn btn-sm btnBook buttonStyles">
                                                     Book for
                                                     NGN39000
-                                                </button>
+                                                </Link>
                                             </div>
 
                                             <div className="col-md-6">

@@ -21,6 +21,8 @@ import MyProfile from "./components/pages/main/MyProfile";
 import ChangePassword from "./components/pages/main/ChangePassword";
 import Payment from "./components/pages/main/Payment";
 import EditProfile from "./components/pages/main/EditProfile";
+import AddBank from "./components/pages/main/AddBank";
+import BookSession from "./components/pages/main/BookSession";
 
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
         <Route exact path="/profile/edit" element={<EditProfile />} />
         <Route exact path="/change-password" element={<ChangePassword />} />
         <Route exact path="/payment" element={<Payment />} />
+        <Route exact path="/add-bank" element={<AddBank />} />
+        <Route exact path="/booking" element={<BookSession />} />
 
         <Route exact path="/notification" element={<Notification />} />
         <Route exact path="/reviews" element={<Reviews />} />

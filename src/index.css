@@ -459,6 +459,14 @@ object-fit: cover;
 }
 
 
+.paymentBank{
+  background: #341C54;
+}
+
+.payment{
+  background: #341C54;
+}
+
 @media (max-width: 767px){
   .disp-large{
     display: none;
