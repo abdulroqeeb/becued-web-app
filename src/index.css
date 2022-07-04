@@ -479,6 +479,50 @@ object-fit: cover;
    font-size: 12px;
 }
 
+.imageHouse{
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border-radius: 100%;
+}
+.bookImage{
+  width: 90px;
+  height: 90px;
+  border-radius: 100%;
+  position: relative;
+  top: 5%;
+  left: 0;
+  right: 20%;
+  bottom: 10%;
+}
+.bookTypeImage{
+    width: 36px;
+  height: 36px;
+  border-radius: 100%;
+}
+.buttonSpace{
+  width: 554px;
+  max-width: 100%;
+
+}
+.bookTypeBtn{
+  width: 100%;
+  height: 64px;
+  border-radius: 10px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bookTypeInfo{
+  text-align:center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #F960F9;
+  height: 54px;
+  width: 100%;
+  margin-top: 150px;
+}
+
+
 .catSearch{
   font-size: 10px;
   color: #fa6be6 !important;
