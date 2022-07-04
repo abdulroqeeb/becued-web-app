@@ -467,6 +467,27 @@ object-fit: cover;
   background: #341C54;
 }
 
+.itemBooked{
+   background: rgba(255, 255, 255, 0.04);
+   border-radius: 10px;
+}
+
+.bookedCategory{
+   background: rgba(255, 255, 255, 0.06);
+   border-radius: 10px;
+   padding: 7px;
+   font-size: 12px;
+}
+
+.catSearch{
+  font-size: 10px;
+  color: #fa6be6 !important;
+}
+
+.itemBookedRow{
+  padding: 30px
+}
+
 @media (max-width: 767px){
   .disp-large{
     display: none;
