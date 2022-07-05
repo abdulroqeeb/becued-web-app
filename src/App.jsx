@@ -23,6 +23,8 @@ import Payment from "./components/pages/main/Payment";
 import EditProfile from "./components/pages/main/EditProfile";
 import AddBank from "./components/pages/main/AddBank";
 import BookSession from "./components/pages/main/BookSession";
+import BookForMe from "./components/pages/main/BookForMe";
+import BookForFriend from "./components/pages/main/BookForFriend";
 
 
 function App() {
@@ -54,6 +56,8 @@ function App() {
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/add-bank" element={<AddBank />} />
         <Route exact path="/booking" element={<BookSession />} />
+        <Route exact path="/booking/for-me" element={<BookForMe />} />
+        <Route exact path="/booking/for-friend" element={<BookForFriend />} />
 
         <Route exact path="/notification" element={<Notification />} />
         <Route exact path="/reviews" element={<Reviews />} />

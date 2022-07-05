@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../includes/Header'
+import { Link } from "react-router-dom";
 
 function BookSession() {
     return (
@@ -26,17 +27,21 @@ function BookSession() {
                                 </div>
 
                                 <p className="mt-2" style={{ fontSize: "20px", fontWeight: "600" }}>Starvia</p>
-                                <p style={{ fontSize: "10px", fontWeight: "400", position: "relative", bottom: "4%" }}>Africans • Comedy • TV Show</p>
+                                <p style={{ fontSize: "10px", fontWeight: "400", position: "relative", bottom: "3%" }}>Africans • Comedy • TV Show</p>
 
 
                                 <div className="buttonSpace">
                                     <p>
-                                        <button className="btn bookTypeBtn">
-                                            <img className="bookTypeImage" src="https://res.cloudinary.com/becued-technologies/image/upload/v1642375277/becued/assets/Group_ctpkz5.svg" alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", textAlign: "center" }}>It's all for me</span> <span className="float-end"><i class="fa fa-angle-right" aria-hidden="true" style={{ fontSize: "16px", textAlign: "center" }}></i></span>
-                                        </button>
-                                        <button className="btn bookTypeBtn">
-                                            <img className="bookTypeImage" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656962855/becued/assets/friend_p1nt98.jpg" alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", textAlign: "center" }}>Book for a friend</span> <span className="float-end"><i class="fa fa-angle-right" aria-hidden="true" style={{ fontSize: "16px", textAlign: "center" }}></i></span>
-                                        </button>
+                                        <Link to={"/booking/for-me"} className="btn bookTypeBtn">
+                                            <div className="mt-2">
+                                                <img className="bookTypeImage" src="https://res.cloudinary.com/becued-technologies/image/upload/v1642375277/becued/assets/Group_ctpkz5.svg" alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", marginLeft: "10px" }}>It's all for me</span> <span className="float-end"><i class="fa fa-angle-right" aria-hidden="true" style={{ fontSize: "16px", textAlign: "center", marginTop: "10px" }}></i></span>
+                                            </div>
+                                        </Link>
+                                        <Link to={"/booking/for-friend"} className="btn bookTypeBtn">
+                                            <div className="mt-2">
+                                                <img className="bookTypeImage" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656962855/becued/assets/friend_p1nt98.jpg" alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", marginLeft: "10px" }}>Book for a friend</span> <span className="float-end"><i class="fa fa-angle-right" aria-hidden="true" style={{ fontSize: "16px", textAlign: "center", marginTop: "10px" }}></i></span>
+                                            </div>
+                                        </Link>
                                     </p>
                                 </div>
 
