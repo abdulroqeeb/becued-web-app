@@ -46,9 +46,9 @@ function PostFeeds() {
                         <div className="feedContent mt-4">
                             <p>{item.feeds.description}</p>
 
-                            {item.feeds.thumbnail !== '' ?? <div className="card">
+                            {item.feeds.thumbnail !== '' ? <div className="card">
                                 <img src={item.feeds.thumbnail} className="card-img-top" alt="itemFile" />
-                            </div>}
+                            </div> : ''}
 
 
                         </div>
