@@ -1,6 +1,10 @@
 import React from "react";
 
 function MyDetails() {
+
+    const user = JSON.parse(localStorage.user);
+
+
     return (
         <div className="card text-center mb-5">
             <div className="card-header">
@@ -8,10 +12,10 @@ function MyDetails() {
             </div>
             <div className="card-body">
 
-                <img className="becuedAvatar" alt="becuedLogo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1642077248/becued/assets/kunle_l6t7bi.svg" />
+                <img className="becuedAvatar" alt="becuedLogo" src={user.avatar} />
 
-                <h5 className="card-title">Anayo Obiajulu</h5>
-                <p className="card-text">@anayodesigns</p>
+                <h5 className="card-title">{user.fullname}</h5>
+                <p className="card-text">@{user.username}</p>
             </div>
 
         </div>

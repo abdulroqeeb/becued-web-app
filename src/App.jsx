@@ -47,21 +47,24 @@ function App() {
           <Route exact path="/" />
         </Route>
         {/* PROTECTED ROUTES */}
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/artiste" element={<ArtisteProfile />} />
-        <Route exact path="/videos" element={<ShoutOut />} />
-        <Route exact path="/profile" element={<MyProfile />} />
-        <Route exact path="/profile/edit" element={<EditProfile />} />
-        <Route exact path="/change-password" element={<ChangePassword />} />
-        <Route exact path="/payment" element={<Payment />} />
-        <Route exact path="/add-bank" element={<AddBank />} />
-        <Route exact path="/booking" element={<BookSession />} />
-        <Route exact path="/booking/for-me" element={<BookForMe />} />
-        <Route exact path="/booking/for-friend" element={<BookForFriend />} />
+        <Route element={<RedirectToLogin />} >
 
-        <Route exact path="/notification" element={<Notification />} />
-        <Route exact path="/reviews" element={<Reviews />} />
-        <Route exact path="/discover" element={<Discover />} />
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/artiste" element={<ArtisteProfile />} />
+          <Route exact path="/videos" element={<ShoutOut />} />
+          <Route exact path="/profile" element={<MyProfile />} />
+          <Route exact path="/profile/edit" element={<EditProfile />} />
+          <Route exact path="/change-password" element={<ChangePassword />} />
+          <Route exact path="/payment" element={<Payment />} />
+          <Route exact path="/add-bank" element={<AddBank />} />
+          <Route exact path="/booking" element={<BookSession />} />
+          <Route exact path="/booking/for-me" element={<BookForMe />} />
+          <Route exact path="/booking/for-friend" element={<BookForFriend />} />
+
+          <Route exact path="/notification" element={<Notification />} />
+          <Route exact path="/reviews" element={<Reviews />} />
+          <Route exact path="/discover" element={<Discover />} />
+        </Route>
 
       </Routes>
 

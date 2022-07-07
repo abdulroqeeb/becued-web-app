@@ -33,16 +33,22 @@ function Login() {
             const data = {
                 email, password,
             };
-            const response = await axios.post(LOGIN_URL, data,);
+            const response = await axios.post(LOGIN_URL, data);
 
             const token = response.data?.token;
 
-            setAuth({ user: response.data?.data, token, password, email });
+            setAuth({ user: response.data?.data, token });
+
+            localStorage.setItem('user', JSON.stringify(response.data?.data));
+            localStorage.setItem('token', token);
+
+
 
             setEmail('');
             setPassword('');
             setBtnText('Login');
             showMessage('Great!', `Welcome back ${response.data?.data.fullname}`, '#291743');
+
 
             setTimeout(() => {
                 window.location.href = '/home';

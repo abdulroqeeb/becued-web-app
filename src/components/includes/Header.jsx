@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
+
+    const user = JSON.parse(localStorage.user);
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg fixed-top" style={{ background: "#150829" }}>
@@ -33,12 +36,12 @@ function Header() {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link text-white" to={""}>
-                                    <center><img className="becuedLogo" alt="becuedLogo" src="https://res.cloudinary.com/becued-technologies/image/upload/v1648834845/becued/assets/defaultavatar_hvnbmv.svg" /></center>
+                                    <center><img className="becuedLogo" alt="becuedLogo" src={user.avatar} /></center>
                                 </Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link className="nav-link text-white mt-1" to={""} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: '16px', fontWeight: '600' }}>
-                                    Anayo Obiajulu <i className="fa fa-chevron-down px-2" aria-hidden="true" style={{ fontSize: '13px', fontWeight: '600' }}></i>
+                                    {user.fullname} <i className="fa fa-chevron-down px-2" aria-hidden="true" style={{ fontSize: '13px', fontWeight: '600' }}></i>
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown" style={{ background: "#150829" }}>
                                     <li><Link className="dropdown-item" to={"/profile"}><img alt="profile" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/Profile_pzhqsj.png" /> Profile Information</Link></li>
@@ -49,7 +52,7 @@ function Header() {
                                     <li><Link className="dropdown-item" to="/reviews"><img alt="reviews" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/review_o26fzu.png" /> Reviews</Link></li>
                                     <li><Link className="dropdown-item" to={"/payment"}><img alt="payment" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/payment_cslexd.png" /> Payment</Link></li>
                                     <li><hr className="dropdown-divider" /></li>
-                                    <li><Link className="dropdown-item" to={"/login"}><img alt="logout" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/logout_rhteoc.png" /> Logout</Link></li>
+                                    <li><Link className="dropdown-item" onClick={() => { localStorage.clear() }} to={"/login"}><img alt="logout" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655810707/becued/assets/logout_rhteoc.png" /> Logout</Link></li>
                                 </ul>
                             </li>
 
