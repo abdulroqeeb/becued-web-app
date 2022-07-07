@@ -47,7 +47,7 @@ function PostFeeds() {
                             <p>{item.feeds.description}</p>
 
                             {item.feeds.thumbnail !== '' ? <div className="card">
-                                <img src={item.feeds.thumbnail} className="card-img-top" alt="itemFile" />
+                                <img src={item.feeds.thumbnail} className="card-img-top" alt="itemFile" style={{ height: '300px', objectFit: 'cover' }} />
                             </div> : ''}
 
 
