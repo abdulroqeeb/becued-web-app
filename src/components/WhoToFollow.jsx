@@ -57,7 +57,7 @@ function WhoToFollow() {
                             return <p>
                                 <button className="btn bookTypeBtn" key={items._id} style={{ paddingTop: '10px', paddingLeft: '5px', paddingRight: '5px' }}>
                                     <div className="mt-2">
-                                        <img className="becuedtoFollow" src={items.avatar} alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", marginLeft: "10px" }}>{items.stageName || items.username} <small style={{ fontSize: "12px", fontWeight: "400", position: "relative", textAlign: 'center' }}>{items.stageRole || items.industry}</small> </span> <span className="float-end"><img className="becuedtoFollowicon float-end" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" /></span>
+                                        <img className="becuedtoFollow" src={items.avatar} alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", marginLeft: "10px" }}>{items.stageName || items.fullname} <small style={{ fontSize: "12px", fontWeight: "400", position: "relative", textAlign: 'center' }}>{items.stageRole || items.industry}</small> </span> <span className="float-end"><img className="becuedtoFollowicon float-end" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" /></span>
                                     </div>
                                 </button>
 
