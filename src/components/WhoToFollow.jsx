@@ -30,7 +30,11 @@ function WhoToFollow() {
 
                 const response = await axios(config);
 
+                console.log(response.data.data);
+
                 setItems(response.data.data);
+
+
 
 
             } catch (error) {
