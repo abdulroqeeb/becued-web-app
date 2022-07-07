@@ -182,6 +182,7 @@ input:focus {
     width: 35px; 
     height: 35px;
     border-radius: 100%;
+    object-fit: cover;
   }
   .becuedAvatar{
     width: 100px; 
@@ -189,6 +190,7 @@ input:focus {
     border-radius: 100%;
     position: relative;
     bottom: 50px;
+    object-fit:cover;
   }
 
   .notified{
@@ -301,6 +303,8 @@ object-fit: cover;
   .becueddetailImage{
     width: 56px;
     height: 56px;
+    border-radius: 100%;
+    object-fit: contain;
   }
 
    .feedContentReaction > span{
