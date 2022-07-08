@@ -30,8 +30,6 @@ function WhoToFollow() {
 
                 const response = await axios(config);
 
-                console.log(response.data.data);
-
                 setItems(response.data.data);
 
 
@@ -54,24 +52,26 @@ function WhoToFollow() {
             <div div className="card-body" >
                 <h5 className="card-title mb-5">Who to Follow</h5>
 
-                <div className="row">
 
-                    {
-                        item.map((items) => {
-                            return <p>
-                                <button className="btn bookTypeBtn" key={items._id} style={{ paddingTop: '10px', paddingLeft: '5px', paddingRight: '5px' }}>
-                                    <div className="mt-2">
-                                        <img className="becuedtoFollow" src={items.avatar} alt="celebimage" /> <span style={{ fontSize: "16px", fontWeight: "500", marginLeft: "10px" }}>{items.stageName !== "NULL" ? items.stageName : items.fullname} <small style={{ fontSize: "12px", fontWeight: "400", position: "relative", textAlign: 'center' }}>{items.stageRole !== "NULL" ? items.stageRole : items.industry}</small> </span> <span className="float-end"><img className="becuedtoFollowicon float-end" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" /></span>
-                                    </div>
-                                </button>
+                {
+                    item.map(items => {
+                        return <div className="row mb-3" key={items._id}>
+                            <div className="col-md-3">
+                                <img className="becuedtoFollow" src={items.avatar} alt="celebimage" />
+                            </div>
+                            <div className="col-md-6">
+                                <p style={{ fontSize: "16px", fontWeight: "500" }}>{items.stageName !== "NULL" ? items.stageName : items.fullname}</p>
+                                <p style={{ fontSize: "12px", fontWeight: "400", position: "relative", bottom: "20%" }}>{items.stageRole !== "NULL" ? items.stageRole : items.industry}</p>
+                            </div>
+                            <div className="col-md-3">
+                                <img className="becuedtoFollowicon" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" />
+                            </div>
 
-                            </p>;
 
+                        </div>
+                    })
+                }
 
-                        })
-                    }
-
-                </div>
 
             </div>
         </div>
