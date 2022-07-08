@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../helpers/axios";
+import truncate from '../helpers/truncate';
 
 
 const TOFOLLOW_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/celeb-to-follow' : 'https://api-v2-staging.becued.com/api/v2/fan/celeb-to-follow'}`;
@@ -60,8 +61,8 @@ function WhoToFollow() {
                                 <img className="becuedtoFollow" src={items.avatar} alt="celebimage" />
                             </div>
                             <div className="col-md-6">
-                                <p style={{ fontSize: "16px", fontWeight: "500" }}>{items.stageName !== "NULL" ? items.stageName : items.fullname}</p>
-                                <p style={{ fontSize: "12px", fontWeight: "400", position: "relative", bottom: "20%" }}>{items.stageRole !== "NULL" ? items.stageRole : items.industry}</p>
+                                <p style={{ fontSize: "16px", fontWeight: "500" }} title={items.stageName !== "NULL" ? items.stageName : items.fullname}>{items.stageName !== "NULL" ? truncate(items.stageName) : truncate(items.fullname)}</p>
+                                <p style={{ fontSize: "12px", fontWeight: "400", position: "relative", bottom: "20%" }} title={items.stageRole !== "NULL" ? items.stageRole : (items.industry).split(",").join(" • ")}>{items.stageRole !== "NULL" ? truncate(items.stageRole) : truncate((items.industry).split(",").join(" • "))}</p>
                             </div>
                             <div className="col-md-3">
                                 <img className="becuedtoFollowicon" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" />
