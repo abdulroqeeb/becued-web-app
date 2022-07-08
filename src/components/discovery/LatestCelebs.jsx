@@ -1,62 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from '../../helpers/axios';
+import truncate from '../../helpers/truncate';
+
+
+
+const TRENDING_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/trending' : 'https://api-v2-staging.becued.com/api/v2/fan/trending'}`;
+
+const headers = {
+    'Authorization': `Bearer ${localStorage.token}`
+}
 
 
 function LatestCelebs() {
+
+
+    const [celebs, setCelebs] = useState([]);
+
+    useEffect(() => {
+        async function getCelebrity() {
+            try {
+
+                var config = {
+                    method: 'get',
+                    url: TRENDING_CELEB_URL,
+                    headers
+                };
+
+                const response = await axios(config);
+
+                setCelebs(response.data.data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getCelebrity();
+    }, [])
+
+
     return (
         <div>
             <div className="row">
-                <div className="col-md-2">
-                    <Link to={"/artiste"} style={{ color: "#fff", textDecoration: "none" }}>
-                        <img className="becuedDiscoverImages" alt="becuedcelebs" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044349/becued/assets/unsplash_UFlO384euRI_ef94fi.png" />
-                        <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Valay B</p>
-                        <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }}>Rap • Music</small>
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>$500</p>
-                    </Link>
-                </div>
-                <div className="col-md-2">
-                    <Link to={"/artiste"} style={{ color: "#fff", textDecoration: "none" }}>
-                        <img className="becuedDiscoverImages" alt="becuedcelebs" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044680/becued/assets/unsplash_2V4Qhq55maY_evvrcc.png" />
-                        <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Balay Banton</p>
-                        <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }}>African • Comedy</small>
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>$500</p>
-                    </Link>
 
-                </div>
-                <div className="col-md-2">
-                    <Link to={"/artiste"} style={{ color: "#fff", textDecoration: "none" }}>
-                        <img className="becuedDiscoverImages" alt="becuedcelebs" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044800/becued/assets/unsplash_pleAbnSa77g_trmjde.png" />
-                        <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Valay B</p>
-                        <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }}>Rap • Music</small>
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>$500</p>
-                    </Link>
-                </div>
-                <div className="col-md-2">
-                    <Link to={"/artiste"} style={{ color: "#fff", textDecoration: "none" }}>
-                        <img className="becuedDiscoverImages" alt="becuedcelebs" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044800/becued/assets/unsplash_cruUfe5g1Zk_e0ibmm.png" />
-                        <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Balay Banton</p>
-                        <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }}>African • Comedy</small>
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>$500</p>
-                    </Link>
-                </div>
-                <div className="col-md-2">
-                    <Link to={"/artiste"} style={{ color: "#fff", textDecoration: "none" }}>
-                        <img className="becuedDiscoverImages" alt="becuedcelebs" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044800/becued/assets/unsplash_M_TOzf3lUcA_jjg9hq.png" />
-                        <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Balay Banton</p>
-                        <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }}>African • Comedy</small>
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>$500</p>
-                    </Link>
-                </div>
-                <div className="col-md-2">
-                    <Link to={"/artiste"} style={{ color: "#fff", textDecoration: "none" }}>
-                        <img className="becuedDiscoverImages" alt="becuedcelebs" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044349/becued/assets/unsplash_UFlO384euRI_ef94fi.png" />
-                        <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }}>Valay B</p>
-                        <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }}>Rap • Music</small>
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>$500</p>
-                    </Link>
-                </div>
+                {celebs.map(celeb => {
+                    return <div className="col-md-2">
+                        <Link to={`/artiste?id=${celeb.info._id}`} style={{ color: "#fff", textDecoration: "none" }}>
+                            <img className="becuedDiscoverImages" alt="becuedcelebs" src={celeb.info.avatar} />
+                            <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }} title={celeb.info.stageName !== "NULL" ? celeb.info.stageName : celeb.info.fullname}>{celeb.info.stageName !== "NULL" ? truncate(celeb.info.stageName, 20) : truncate(celeb.info.fullname, 20)}</p>
+                            <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }} title={(celeb.info.industry + "").split(",").join(" • ")}>{truncate((celeb.info.industry + "").split(",").join(" • "))}</small>
+                            <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}>₦{Number(celeb.pricing.bookingAmount).toLocaleString()}</p>
+                        </Link>
+                    </div>
+                })}
+
+
+
             </div>
-        </div>
+        </div >
     );
 }
 

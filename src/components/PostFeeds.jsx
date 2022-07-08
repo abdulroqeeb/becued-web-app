@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from '../helpers/axios';
+import formatTime from '../helpers/timeago';
+import truncate from '../helpers/truncate';
 
 const FEEDS_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/feeds' : 'https://api-v2-staging.becued.com/api/v2/feeds'}`;
 
@@ -38,8 +40,8 @@ function PostFeeds() {
                                 <img className="becueddetailImage" alt="becueddetailImage" src={item.userInfo.avatar} />
                             </div>
                             <div className="col-md-10">
-                                <p style={{ position: "relative", right: "3%", fontSize: "16px", fontWeight: "500" }}>{item.userInfo.fullname}</p>
-                                <small style={{ position: "relative", bottom: "25%", right: "3%", fontSize: "14px", color: "#5F5B65" }}>{item.feeds.created_at}</small>
+                                <p style={{ position: "relative", right: "3%", fontSize: "16px", fontWeight: "500", cursor: "pointer" }} data-bs-toggle="tooltip" data-bs-placement="top" title={item.userInfo.fullname}>{truncate(item.userInfo.fullname)}</p>
+                                <small style={{ position: "relative", bottom: "25%", right: "3%", fontSize: "14px", color: "#5F5B65" }}>{formatTime(item.feeds.created_at)}</small>
                             </div>
                         </div>
 

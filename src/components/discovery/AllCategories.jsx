@@ -1,33 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from '../../helpers/axios';
+
+const CATEGORY_LIST_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/industry' : 'https://api-v2-staging.becued.com/api/v2/industry'}`;
+
 
 function AllCategories() {
+
+    const [category, setCategory] = useState([])
+
+    useEffect(() => {
+        async function fetchCategoryList() {
+            try {
+                const response = await axios.get(CATEGORY_LIST_URL);
+
+                setCategory(response.data.data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchCategoryList();
+    }, []);
+
     return (
         <div>
             <div className="row">
-                <div className="col-md-2">
-                    <img className="becuedDiscoverImages" alt="becuedcategories" src="https://res.cloudinary.com/becued-technologies/image/upload/v1640159684/becued/assets/artandculture_mw0spc.png" />
-                    <p style={{ fontSize: "12px" }}>Art & Culture</p>
-                </div>
-                <div className="col-md-2">
-                    <img className="becuedDiscoverImages" alt="becuedcategories" src="https://res.cloudinary.com/becued-technologies/image/upload/v1640159684/becued/assets/nature_f4ikhu.png" />
-                    <p style={{ fontSize: "12px" }}>Nature</p>
-                </div>
-                <div className="col-md-2">
-                    <img className="becuedDiscoverImages" alt="becuedcategories" src="https://res.cloudinary.com/becued-technologies/image/upload/v1640159921/becued/assets/fashion_hv060p.png" />
-                    <p style={{ fontSize: "12px" }}>Fashion</p>
-                </div>
-                <div className="col-md-2">
-                    <img className="becuedDiscoverImages" alt="becuedcategories" src="https://res.cloudinary.com/becued-technologies/image/upload/v1640160120/becued/assets/technology_pwzxe2.png" />
-                    <p style={{ fontSize: "12px" }}>Technology</p>
-                </div>
-                <div className="col-md-2">
-                    <img className="becuedDiscoverImages" alt="becuedcategories" src="https://res.cloudinary.com/becued-technologies/image/upload/v1640159684/becued/assets/music_rvygek.png" />
-                    <p style={{ fontSize: "12px" }}>Music</p>
-                </div>
-                <div className="col-md-2">
-                    <img className="becuedDiscoverImages" alt="becuedcategories" src="https://res.cloudinary.com/becued-technologies/image/upload/v1640159684/becued/assets/comedy_arujtw.png" />
-                    <p style={{ fontSize: "12px" }}>Comedy</p>
-                </div>
+
+                {category.map(categories => {
+                    return <div className="col-md-2" key={categories._id}>
+                        <img className="becuedDiscoverImages" alt="becuedcategories" src={categories.image} />
+                        <p style={{ fontSize: "12px" }}>{categories.name}</p>
+                    </div>
+                })}
+
+
+
             </div>
         </div>
     );
