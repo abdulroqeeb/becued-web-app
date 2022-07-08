@@ -152,7 +152,8 @@ function ArtisteProfile() {
                                             <div className="col-md-6">
                                                 <Link to={"/booking"} className="btn btn-sm btnBook buttonStyles">
                                                     Book for
-                                                    NGN {Number(celebs.pricing.bookingAmount).toLocaleString()}
+                                                    NGN {celebs.pricing.bookingAmount != null ? Number(celebs.pricing.bookingAmount).toLocaleString() : 0.00}
+
                                                 </Link>
                                             </div>
 
