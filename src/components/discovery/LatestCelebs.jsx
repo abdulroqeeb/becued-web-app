@@ -50,7 +50,7 @@ function LatestCelebs() {
                             <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }} title={celeb.info.stageName !== "NULL" ? celeb.info.stageName : celeb.info.fullname}>{celeb.info.stageName !== "NULL" ? truncate(celeb.info.stageName, 20) : truncate(celeb.info.fullname, 20)}</p>
                             <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }} title={(celeb.info.industry + "").split(",").join(" • ")}>{truncate((celeb.info.industry + "").split(",").join(" • "))}</small>
 
-                            <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}> ₦{celeb.pricing.bookingAmount != null ? Number(celeb.pricing.bookingAmount).toLocaleString() : 0.00}</p>
+                            <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}> ₦{celeb.pricing != null ? Number(celeb.pricing.bookingAmount).toLocaleString() : 0.00}</p>
                         </Link>
                     </div>
                 })}
