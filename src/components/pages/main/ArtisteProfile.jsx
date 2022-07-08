@@ -34,8 +34,6 @@ function ArtisteProfile() {
 
                 const response = await axios(config);
 
-                console.log(response);
-
                 setCelebs(response.data.data);
                 setState(true);
 
