@@ -62,7 +62,8 @@ function WhoToFollow() {
                             </div>
                             <div className="col-md-6">
                                 <p style={{ fontSize: "16px", fontWeight: "500" }} title={items.stageName !== "NULL" ? items.stageName : items.fullname}>{items.stageName !== "NULL" ? truncate(items.stageName) : truncate(items.fullname)}</p>
-                                <p style={{ fontSize: "12px", fontWeight: "400", position: "relative", bottom: "20%" }} title={items.stageRole !== "NULL" ? items.stageRole : (items.industry).split(",").join(" • ")}>{items.stageRole !== "NULL" ? truncate(items.stageRole) : truncate((items.industry).split(",").join(" • "))}</p>
+                                <p style={{ fontSize: "12px", fontWeight: "400", position: "relative", bottom: "20%" }} title={items.stageRole !== "NULL" ? items.stageRole : (items.industry + "").split(",").join(" • ")}>{items.stageRole !== "NULL" ? truncate(items.stageRole) : truncate((items.industry + "").split(",").join(" • "))}</p>
+
                             </div>
                             <div className="col-md-3">
                                 <img className="becuedtoFollowicon" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" />
