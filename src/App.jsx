@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './index.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 import Home from "./components/pages/Home";
 import Register from "./components/pages/auth/Register";
 import Login from "./components/pages/auth/Login";

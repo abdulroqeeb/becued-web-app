@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from '../helpers/axios';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import formatTime from '../helpers/timeago';
 import truncate from '../helpers/truncate';
+import MyLoader from '../components/MyLoader';
 
 const FEEDS_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/feeds' : 'https://api-v2-staging.becued.com/api/v2/feeds'}`;
 
@@ -12,6 +14,7 @@ const headers = {
 function PostFeeds() {
 
     const [items, setItems] = useState([]);
+    const [status, setStatus] = useState(false);
 
     useEffect(() => {
 
@@ -20,6 +23,7 @@ function PostFeeds() {
                 const response = await axios.get(FEEDS_URL, headers);
 
                 setItems(response.data.data);
+                setStatus(true);
             } catch (error) {
                 console.log(error);
             }
@@ -31,7 +35,7 @@ function PostFeeds() {
 
     return (
         <>
-            {items.map((item) => {
+            {status ? items.map((item) => {
 
                 return <div className="card mb-3" key={item.feeds._id}>
                     <div className="card-body">
@@ -64,7 +68,7 @@ function PostFeeds() {
 
                     </div>
                 </div>
-            })}
+            }) : <MyLoader backgroundColor="#71767a" height={124} />}
         </>
     );
 
