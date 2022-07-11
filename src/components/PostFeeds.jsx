@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from '../helpers/axios';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import formatTime from '../helpers/timeago';
 import truncate from '../helpers/truncate';
 import MyLoader from '../components/MyLoader';
@@ -68,7 +67,7 @@ function PostFeeds() {
 
                     </div>
                 </div>
-            }) : <MyLoader backgroundColor="#71767a" height={124} />}
+            }) : <MyLoader />}
         </>
     );
 

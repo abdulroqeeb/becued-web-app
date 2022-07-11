@@ -118,8 +118,14 @@ function ArtisteProfile() {
                                             </p>
                                             <small className="star">
 
-                                                <img src="https://res.cloudinary.com/becued-technologies/image/upload/v1651783696/becued/assets/Shape_ieko6c.svg"
-                                                    alt="" />
+                                                {(() => {
+                                                    let stars = [];
+                                                    for (let i = 0; i < parseInt(celebs.info.ratings); i++) {
+                                                        stars.push(<img src="https://res.cloudinary.com/becued-technologies/image/upload/v1651783696/becued/assets/Shape_ieko6c.svg" alt="" />)
+                                                    }
+                                                    return stars;
+                                                })()}
+
                                                 <span style={{ fontSize: "13px", color: "#fff" }}> {celebs.info.ratings}
                                                 </span></small>
                                             <br />

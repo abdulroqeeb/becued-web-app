@@ -19,12 +19,6 @@ function Notification() {
 
                         <p className="mt-5 mb-5">Today</p>
                         <NotifyFeeds />
-                        <NotifyFeeds />
-                        <NotifyFeeds />
-
-                        <p className="mt-5 mb-5">Yesterday</p>
-                        <NotifyFeeds />
-                        <NotifyFeeds />
 
                     </div>
 

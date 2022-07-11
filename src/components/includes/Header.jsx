@@ -1,9 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import axios from '../../helpers/axios';
+
+
+const NOTIFY_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/notification/fan' : 'https://api-v2-staging.becued.com/api/v2/notification/fan'}`;
+
+const headers = {
+    'Authorization': `Bearer ${localStorage.token}`
+}
 
 function Header() {
 
     const user = JSON.parse(localStorage.user);
+
+    const [notification, setNotifications] = useState([]);
+    const [status, setStatus] = useState(false);
+
+
+    useEffect(() => {
+        async function fetchNotifications() {
+            try {
+
+                var config = {
+                    method: 'get',
+                    url: NOTIFY_URL,
+                    headers
+                };
+
+                const response = await axios(config);
+
+                setNotifications(response.data.data);
+                setStatus(true);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchNotifications();
+    }, []);
 
     return (
         <div>
@@ -29,7 +64,7 @@ function Header() {
                         <ul className="navbar-nav d-flex mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification"><i className="fa fa-bell-o" aria-hidden="true" style={{ fontSize: '30px' }}></i><span className="position-absolute badge translate-middle notified">
-                                    3
+                                    {notification.length}
                                 </span> </Link>
 
 

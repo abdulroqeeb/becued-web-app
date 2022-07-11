@@ -263,6 +263,14 @@ object-fit: cover;
     object-fit: cover;
   }
 
+  .becuedShoutOut{
+    max-width: 100%;
+    width: 700px;
+    max-height: inherit;
+    height: 300px;
+    object-fit: cover;
+  }
+
 
   .becuedDiscoveryCategories{
     width: 100%;

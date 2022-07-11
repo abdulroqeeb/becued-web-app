@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../../includes/Header'
 import ReviewFeeds from '../../ReviewFeeds';
 
+
+
 function Reviews() {
 
     return (
@@ -16,8 +18,6 @@ function Reviews() {
                     <div className="card-body" style={{ paddingBottom: '100px' }}>
                         <h5 className="card-title mb-3">Reviews</h5>
 
-                        <ReviewFeeds />
-                        <ReviewFeeds />
                         <ReviewFeeds />
 
                     </div>
