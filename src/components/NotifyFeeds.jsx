@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../helpers/axios';
+import formatTime from '../helpers/timeago';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 
@@ -52,7 +53,7 @@ function NotifyFeeds() {
                     </div>
                     <div className="col-md-2 mx-auto"></div>
                     <div className="col-md-2">
-                        <p style={{ color: '#8E8EA1' }}>{new Date(notifications.created_at).toLocaleDateString()}</p>
+                        <p style={{ color: '#8E8EA1' }}>{formatTime(notifications.created_at)}</p>
                     </div>
 
                 </div>
