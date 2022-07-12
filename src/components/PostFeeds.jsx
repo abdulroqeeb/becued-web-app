@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from '../helpers/axios';
-import formatTime from '../helpers/timeago';
+import timeago from '../helpers/timeago';
 import truncate from '../helpers/truncate';
 import MyLoader from '../components/MyLoader';
 
@@ -44,7 +44,7 @@ function PostFeeds() {
                             </div>
                             <div className="col-md-10">
                                 <p style={{ position: "relative", right: "3%", fontSize: "16px", fontWeight: "500", cursor: "pointer" }} data-bs-toggle="tooltip" data-bs-placement="top" title={item.userInfo.fullname}>{truncate(item.userInfo.fullname)}</p>
-                                <small style={{ position: "relative", bottom: "25%", right: "3%", fontSize: "14px", color: "#5F5B65" }}>{formatTime(item.feeds.created_at)}</small>
+                                <small style={{ position: "relative", bottom: "25%", right: "3%", fontSize: "14px", color: "#5F5B65" }}>{timeago.formatTime(item.feeds.created_at)}</small>
                             </div>
                         </div>
 

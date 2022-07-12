@@ -12,4 +12,15 @@ const formatTime = (date) => {
     return timeAgo.format(new Date(date))
 }
 
-export default formatTime;
+const dateFormat = (date) => {
+    const dateOption = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    return new Date(date).toLocaleString('en-GB', dateOption);
+}
+
+export default { formatTime, dateFormat };
