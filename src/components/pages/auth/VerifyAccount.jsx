@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom'
 import Wallpaper from '../../Wallpaper';
+import axios from '../../../helpers/axios';
+import showMessage from '../../../helpers/responses';
+
+
+const REGISTER_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/web-register' : 'https://api-v2-staging.becued.com/api/v2/fan/web-register'}`;
 
 const VerifyAccount = () => {
+
+    const { state } = useLocation();
+    const navigate = useNavigate();
+
     const [otp, setOtp] = useState(new Array(6).fill(''));
+
 
     const handleChange = (element, index) => {
         if (isNaN(element.value)) return false;
@@ -16,14 +27,35 @@ const VerifyAccount = () => {
         }
         else {
             window.location.href = '/set-password';
+
+            //TODO:: Verify the OTP and Send data to next page...
         }
 
 
     };
 
-    function handleClick(e) {
+    async function handleClick(e) {
         e.preventDefault();
-        alert('Resend code successfully sent');
+
+        try {
+
+            const data = {
+                fullname: state.fullname, email: state.email, username: state.username
+            };
+            const response = await axios.post(REGISTER_URL, data);
+
+            console.log(response);
+
+        } catch (error) {
+
+
+            if (!error.response.data) {
+                showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
+            }
+            else {
+                showMessage('Oops!', error.response?.data.message, '#a10b96');
+            }
+        }
     }
 
     return (
@@ -35,7 +67,7 @@ const VerifyAccount = () => {
                 <div className="col-md-6">
                     <div className="createAccount mt-3">
                         <h1>Verify Your Account</h1>
-                        <p>We have just sent a code to:(adenugaadebambo41@gmail.com)</p>
+                        <p>We have just sent a code to:({state.email})</p>
 
                         <form action="#" method="post">
                             <div className="pin-input color-black mt-5 mb-2">
