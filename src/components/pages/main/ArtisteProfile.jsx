@@ -10,13 +10,15 @@ const headers = {
     'Authorization': `Bearer ${localStorage.token}`
 }
 
+let THIS_CELEB_URL;
+
 
 function ArtisteProfile() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const celebUrlId = urlParams.get('id');
 
-    const THIS_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/getthisceleb/' + celebUrlId : 'https://api-v2-staging.becued.com/api/v2/fan/getthisceleb/' + celebUrlId}`;
+    THIS_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/getthisceleb/' + celebUrlId : 'https://api-v2-staging.becued.com/api/v2/fan/getthisceleb/' + celebUrlId}`;
 
     const [celebs, setCelebs] = useState([]);
     const [state, setState] = useState(false);
