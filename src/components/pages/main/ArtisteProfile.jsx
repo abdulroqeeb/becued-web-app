@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from '../../includes/Header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../../../helpers/axios';
-
-
+import showMessage from '../../../helpers/responses';
 
 
 const headers = {
@@ -11,6 +10,10 @@ const headers = {
 }
 
 let THIS_CELEB_URL;
+let FOLLOW_CELEB_URL;
+let UNFOLLOW_CELEB_URL;
+
+
 
 
 function ArtisteProfile() {
@@ -20,8 +23,14 @@ function ArtisteProfile() {
 
     THIS_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/getthisceleb/' + celebUrlId : 'https://api-v2-staging.becued.com/api/v2/fan/getthisceleb/' + celebUrlId}`;
 
+    FOLLOW_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/follow/' + celebUrlId : 'https://api-v2-staging.becued.com/api/v2/fan/follow/' + celebUrlId}`;
+
+    UNFOLLOW_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/unfollow/' + celebUrlId : 'https://api-v2-staging.becued.com/api/v2/fan/unfollow/' + celebUrlId}`;
+
     const [celebs, setCelebs] = useState([]);
     const [state, setState] = useState(false);
+    const [status, setStatus] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getCelebrity() {
@@ -36,8 +45,10 @@ function ArtisteProfile() {
 
                 const response = await axios(config);
 
+
                 setCelebs(response.data.data);
                 setState(true);
+                setStatus(response.data.data.follow);
 
 
             } catch (error) {
@@ -50,6 +61,64 @@ function ArtisteProfile() {
             console.log('I have returned');
         }
     }, [])
+
+
+    const handleBooking = () => {
+
+    }
+
+    const handleFollow = async () => {
+
+        try {
+
+
+            var config = {
+                method: 'post',
+                url: FOLLOW_CELEB_URL,
+                headers,
+            };
+
+            await axios(config);
+            setStatus('following');
+            showMessage('Great!', `You now follow ${celebs.info.stageName !== "NULL" ? celebs.info.stageName : celebs.info.fullname}`, '#291743');
+
+
+
+
+        } catch (error) {
+
+            if (!error.response.data) {
+                showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
+            }
+            else {
+                showMessage('Oops!', error.response?.data.message, '#a10b96');
+            }
+        }
+
+    }
+
+    const handleUnFollow = async () => {
+        try {
+
+            var config = {
+                method: 'post',
+                url: UNFOLLOW_CELEB_URL,
+                headers,
+            };
+
+            await axios(config);
+            setStatus('not following');
+
+        } catch (error) {
+
+            if (!error.response.data) {
+                showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
+            }
+            else {
+                showMessage('Oops!', error.response?.data.message, '#a10b96');
+            }
+        }
+    }
 
 
     return (
@@ -156,18 +225,18 @@ function ArtisteProfile() {
                                         <div className="row">
 
                                             <div className="col-md-6">
-                                                <Link to={"/booking"} className="btn btn-sm btnBook buttonStyles">
+                                                <button className="btn btn-sm btnBook buttonStyles" onClick={handleBooking}>
                                                     Book for
                                                     NGN {celebs.pricing != null ? Number(celebs.pricing.bookingAmount).toLocaleString() : 0.00}
 
-                                                </Link>
+                                                </button>
                                             </div>
 
                                             <div className="col-md-6">
-                                                {celebs.follow === 'not following' ? <button className="btn btn-sm btnFollow buttonStyles">
+                                                {status === 'not following' ? <button className="btn btn-sm btnFollow buttonStyles" onClick={handleFollow}>
                                                     Follow
-                                                </button> : <button className="btn btn-sm btnFollow buttonStyles" style={{ cursor: 'not-allowed' }}>
-                                                    Already following
+                                                </button> : <button className="btn btn-sm btnFollow buttonStyles" onClick={handleUnFollow}>
+                                                    Following
                                                 </button>}
 
                                             </div>
