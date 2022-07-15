@@ -6,6 +6,7 @@ import showMessage from '../../../helpers/responses';
 
 
 const REGISTER_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/web-register' : 'https://api-v2-staging.becued.com/api/v2/fan/web-register'}`;
+const VERIFY_CODE_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/auth/verify-otp' : 'https://api-v2-staging.becued.com/api/v2/auth/verify-otp'}`;
 
 const VerifyAccount = () => {
 
@@ -13,22 +14,42 @@ const VerifyAccount = () => {
     const navigate = useNavigate();
 
     const [otp, setOtp] = useState(new Array(6).fill(''));
+    const [otpValue, setOtpValue] = useState([]);
 
 
-    const handleChange = (element, index) => {
+    const handleChange = async (element, index) => {
+
+
         if (isNaN(element.value)) return false;
 
         setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
 
+
         // Focus on next input element
+        setOtpValue(element.value);
+
+        console.log(otpValue);
+
 
         if (element.nextSibling) {
             element.nextSibling.focus();
+
         }
         else {
-            window.location.href = '/set-password';
+            // window.location.href = '/set-password';
+
 
             //TODO:: Verify the OTP and Send data to next page...
+
+            const data = {
+                code: document.getElementById('verifyOtp').value
+            };
+
+            console.log(data);
+
+
+            // const response = await axios.post(REGISTER_URL, data);
+
         }
 
 
@@ -42,9 +63,8 @@ const VerifyAccount = () => {
             const data = {
                 fullname: state.fullname, email: state.email, username: state.username
             };
-            const response = await axios.post(REGISTER_URL, data);
+            await axios.post(REGISTER_URL, data);
 
-            console.log(response);
 
         } catch (error) {
 
@@ -93,6 +113,7 @@ const VerifyAccount = () => {
 
 
                             <input type="hidden" name="verifyOtp" id="verifyOtp" value={otp.join("")} />
+
 
                             <br />
                             <div className="mb-4">
