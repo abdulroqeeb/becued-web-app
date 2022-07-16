@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../helpers/axios";
 import truncate from '../helpers/truncate';
-
+import showMessage from '../helpers/responses';
 
 const TOFOLLOW_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/celeb-to-follow' : 'https://api-v2-staging.becued.com/api/v2/fan/celeb-to-follow'}`;
 
@@ -9,12 +9,15 @@ const headers = {
     'Authorization': `Bearer ${localStorage.token}`
 }
 
+let FOLLOW_CELEB_URL;
+
 
 
 function WhoToFollow() {
 
-
     const [item, setItems] = useState([]);
+    const [status, setStatus] = useState('');
+
 
     useEffect(() => {
 
@@ -46,6 +49,39 @@ function WhoToFollow() {
 
     }, []);
 
+
+    const handleFollow = async (celebUrlId, name) => {
+
+
+        FOLLOW_CELEB_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/follow/' + celebUrlId : 'https://api-v2-staging.becued.com/api/v2/fan/follow/' + celebUrlId}`;
+
+        try {
+            var config = {
+                method: 'post',
+                url: FOLLOW_CELEB_URL,
+                headers,
+            };
+
+            await axios(config);
+            setStatus('following');
+            showMessage('Great!', `You now follow ${name}`, '#291743');
+
+
+
+
+
+        } catch (error) {
+
+            if (!error.response.data) {
+                showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
+            }
+            else {
+                showMessage('Oops!', error.response?.data.message, '#a10b96');
+            }
+        }
+
+    }
+
     return (
 
         <div className="card mt-5">
@@ -66,7 +102,7 @@ function WhoToFollow() {
 
                             </div>
                             <div className="col-md-3">
-                                <img className="becuedtoFollowicon" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" />
+                                <img className="becuedtoFollowicon" alt="becuedtofollowicon" src="https://res.cloudinary.com/becued-technologies/image/upload/v1655829897/becued/assets/plus-circle_lqdzxv.png" onClick={() => { handleFollow(items._id, items.stageName !== "NULL" ? items.stageName : items.fullname) }} />
                             </div>
 
 
