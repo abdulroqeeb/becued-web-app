@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../includes/Header'
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 function BookForFriend() {
     return (
         <div>

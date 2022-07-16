@@ -1,7 +1,25 @@
 import React from 'react'
 import Header from '../../includes/Header'
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 function BookForMe() {
+
+    const { state } = useLocation();
+    const navigate = useNavigate();
+
+    console.log(state);
+
+    const handleBack = (e) => {
+
+        e.preventDefault();
+
+        navigate("/booking", { state: state.celebs })
+    }
+
+    const handleNexMove = (e) => {
+        e.preventDefault();
+        alert('In progress');
+    }
+
     return (
         <div>
 
@@ -17,7 +35,7 @@ function BookForMe() {
 
                             <div className="col-md-12 mb-5">
 
-                                <h5 className="text-white" style={{ fontSize: '25px', fontWeight: '600' }}><Link to={"/booking"}><i class="fa fa-arrow-left" aria-hidden="true" style={{ color: '#FD9B8A' }}></i></Link> Book A Session For Me</h5>
+                                <h5 className="text-white" style={{ fontSize: '25px', fontWeight: '600' }}><button onClick={handleBack} style={{ background: 'transparent', border: 'none' }}><i className="fa fa-arrow-left" aria-hidden="true" style={{ color: '#FD9B8A' }}></i></button> Book A Session For Me</h5>
                             </div>
 
                             <div className="row mx-auto col-md-8">
@@ -27,15 +45,15 @@ function BookForMe() {
                                             <div className="col-md-6 mx-auto mb-5">
                                                 <div className="row">
                                                     <div className="col-4">
-                                                        <img className="bookImage" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044680/becued/assets/unsplash_2V4Qhq55maY_evvrcc.png" alt="celebimage" />
-                                                        <p className="mt-4" style={{ fontSize: "14px", fontWeight: "600" }}>Starvia</p>
+                                                        <img className="bookImage" src={state.celebs.info.avatar} alt="celebimage" />
+                                                        <p className="mt-4" style={{ fontSize: "14px", fontWeight: "600" }}>{state.celebs.info.stageName !== "NULL" ? state.celebs.info.stageName : state.celebs.info.fullname}</p>
                                                     </div>
                                                     <div className="col-4">
                                                         <img className="mt-5" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656886978/becued/assets/Union_zaaorr.png" alt="conector" />
                                                     </div>
                                                     <div className="col-4">
-                                                        <img className="bookImage" src="https://res.cloudinary.com/becued-technologies/image/upload/v1656044800/becued/assets/unsplash_cruUfe5g1Zk_e0ibmm.png" alt="celebimage" />
-                                                        <p className="mt-4" style={{ fontSize: "14px", fontWeight: "600" }}>Kunle Shokunbi</p>
+                                                        <img className="bookImage" src={state.user.avatar} alt="celebimage" />
+                                                        <p className="mt-4" style={{ fontSize: "14px", fontWeight: "600" }}>{state.user.fullname}</p>
                                                     </div>
                                                 </div>
 
@@ -89,7 +107,9 @@ function BookForMe() {
 
 
                                     <div className="mt-5 mb-4">
-                                        <button className="btn btn-block buttonStyles"
+                                        <button
+                                            className="btn btn-block buttonStyles"
+                                            onClick={handleNexMove}
                                         >Continue</button>
 
                                     </div>

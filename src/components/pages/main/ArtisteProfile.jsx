@@ -64,7 +64,7 @@ function ArtisteProfile() {
 
 
     const handleBooking = () => {
-
+        navigate('/booking', { state: celebs });
     }
 
     const handleFollow = async () => {
