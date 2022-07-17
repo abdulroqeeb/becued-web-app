@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from '../../helpers/axios';
+import { Badge } from '@mui/material'
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
 const NOTIFY_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/notification/fan' : 'https://api-v2-staging.becued.com/api/v2/notification/fan'}`;
@@ -63,9 +65,13 @@ function Header() {
 
                         <ul className="navbar-nav d-flex mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification"><i className="fa fa-bell-o" aria-hidden="true" style={{ fontSize: '30px' }}></i><span className="position-absolute badge translate-middle notified">
-                                    {notification.length}
-                                </span> </Link>
+                                <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification">
+
+                                    <Badge badgeContent={notification.length} color="primary">
+                                        <NotificationsIcon color="action" />
+                                    </Badge>
+
+                                </Link>
 
 
                             </li>

@@ -6,8 +6,6 @@ function BookForMe() {
     const { state } = useLocation();
     const navigate = useNavigate();
 
-    console.log(state);
-
     const handleBack = (e) => {
 
         e.preventDefault();
@@ -17,7 +15,8 @@ function BookForMe() {
 
     const handleNexMove = (e) => {
         e.preventDefault();
-        alert('In progress');
+
+        navigate("/booking/payment", { state: { celebs: state.celebs, user: state.user } })
     }
 
     return (

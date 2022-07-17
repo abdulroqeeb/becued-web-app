@@ -26,6 +26,7 @@ import AddBank from "./components/pages/main/AddBank";
 import BookSession from "./components/pages/main/BookSession";
 import BookForMe from "./components/pages/main/BookForMe";
 import BookForFriend from "./components/pages/main/BookForFriend";
+import BookPayment from "./components/pages/main/BookPayment";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
           <Route exact path="/booking" element={<BookSession />} />
           <Route exact path="/booking/for-me" element={<BookForMe />} />
           <Route exact path="/booking/for-friend" element={<BookForFriend />} />
+          <Route exact path="/booking/payment" element={<BookPayment />} />
 
           <Route exact path="/notification" element={<Notification />} />
           <Route exact path="/reviews" element={<Reviews />} />
