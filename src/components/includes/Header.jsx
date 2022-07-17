@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from '../../helpers/axios';
 import { Badge } from '@mui/material'
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationsNoneTwoToneIcon from '@mui/icons-material/NotificationsNoneTwoTone';
 
 
 const NOTIFY_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/notification/fan' : 'https://api-v2-staging.becued.com/api/v2/notification/fan'}`;
@@ -68,7 +69,7 @@ function Header() {
                                 <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification">
 
                                     <Badge badgeContent={notification.length} color="primary">
-                                        <NotificationsIcon color="action" />
+                                        <NotificationsNoneTwoToneIcon color="action" />
                                     </Badge>
 
                                 </Link>
