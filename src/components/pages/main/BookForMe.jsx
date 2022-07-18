@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../includes/Header'
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+
+import TextField from '@mui/material/TextField';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 function BookForMe() {
 
     const { state } = useLocation();
     const navigate = useNavigate();
+    const [event, setEvent] = useState('');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [bookingFor, setbookingFor] = useState("It's all for me");
+
+    const [value, setValue] = useState(new Date());
+
 
     const handleBack = (e) => {
 
@@ -16,7 +28,23 @@ function BookForMe() {
     const handleNexMove = (e) => {
         e.preventDefault();
 
-        navigate("/booking/payment", { state: { celebs: state.celebs, user: state.user } })
+        let formResult = [];
+        let userPeriod = '';
+        var curHr = value.getHours()
+
+        if (curHr < 12) {
+            userPeriod = 'Morning';
+        } else if (curHr < 18) {
+            userPeriod = 'Afternoon';
+        } else {
+            userPeriod = 'Evening';
+        }
+
+        formResult.push({
+            title, description, sessionAvailability: { sessionDate: value.toISOString(), sessionPeriod: userPeriod, sessionTime: value.toLocaleTimeString(), sessionDuration: "2:30 hr" }, event, bookingFor
+        });
+
+        navigate("/booking/payment", { state: { celebs: state.celebs, user: state.user, body: Object.assign(...formResult) } })
     }
 
     return (
@@ -71,8 +99,8 @@ function BookForMe() {
 
 
                                     <div className="mb-4">
-                                        <label htmlFor="purpose" className="form-label text-white" style={{ fontSize: '16px', fontWeight: '600' }}>Please select the purpose of the event</label>
-                                        <select className="form-control form-select inputField" id="purpose" required>
+                                        <label htmlFor="event" className="form-label text-white" style={{ fontSize: '16px', fontWeight: '600' }}>Please select the purpose of the event</label>
+                                        <select className="form-control form-select inputField" id="event" onChange={(e) => setEvent(e.target.value)} value={event} required>
                                             <option value="">Select title</option>
                                             <option value="Get Advice">Get Advice</option>
                                             <option value="Ask a question">Ask a question</option>
@@ -82,27 +110,43 @@ function BookForMe() {
                                             <option value="Birthday">Birthday</option>
                                         </select>
 
+
                                     </div>
 
                                     <div className="mb-4">
                                         <label htmlFor="title" className="form-label text-white">What’s your title?</label>
-                                        <input type="text"
-                                            className="form-control inputField" name="title" required />
+                                        <input
+                                            type="text"
+                                            className="form-control inputField"
+                                            name="title"
+                                            onChange={(e) => setTitle(e.target.value)}
+                                            value={title}
+                                            required />
                                     </div>
 
 
                                     <div className="mb-4">
-                                        <label htmlFor="introduction" className="form-label text-white">Enter introduction message</label>
-                                        <textarea type="text"
-                                            className="form-control inputField" name="title" required></textarea>
+                                        <label htmlFor="description" className="form-label text-white">Enter introduction message</label>
+                                        <textarea
+                                            type="text"
+                                            className="form-control inputField"
+                                            name="description"
+                                            onChange={(e) => setDescription(e.target.value)}
+                                            value={description}
+                                            required></textarea>
                                     </div>
 
 
-                                    <div className="mb-4">
-                                        <label htmlFor="sessionDate" className="form-label text-white" style={{ fontSize: '16px', fontWeight: '600' }}>Select Session Date</label>
-                                        <input type="date"
-                                            className="form-control inputField" name="sessionDate" required />
-                                    </div>
+                                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                        <DateTimePicker
+                                            renderInput={(props) => <TextField fullWidth {...props} />}
+                                            label="DateTimePicker"
+                                            value={value}
+                                            onChange={(newValue) => {
+                                                setValue(newValue);
+                                            }}
+                                        />
+                                    </LocalizationProvider>
 
 
                                     <div className="mt-5 mb-4">

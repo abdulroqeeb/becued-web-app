@@ -27,6 +27,7 @@ import BookSession from "./components/pages/main/BookSession";
 import BookForMe from "./components/pages/main/BookForMe";
 import BookForFriend from "./components/pages/main/BookForFriend";
 import BookPayment from "./components/pages/main/BookPayment";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 
 function App() {
@@ -67,6 +68,13 @@ function App() {
           <Route exact path="/notification" element={<Notification />} />
           <Route exact path="/reviews" element={<Reviews />} />
           <Route exact path="/discover" element={<Discover />} />
+
+
+          {/* Payment Successful */}
+
+          <Route exact path="/payment-success" element={<PaymentSuccess />} />
+
+
         </Route>
 
       </Routes>

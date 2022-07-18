@@ -68,8 +68,8 @@ function Header() {
                             <li className="nav-item">
                                 <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification">
 
-                                    <Badge badgeContent={notification.length} color="primary">
-                                        <NotificationsNoneTwoToneIcon color="action" />
+                                    <Badge badgeContent={notification.length} color="error">
+                                        <NotificationsNoneTwoToneIcon color="default" />
                                     </Badge>
 
                                 </Link>
