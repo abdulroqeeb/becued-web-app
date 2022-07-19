@@ -18,7 +18,7 @@ function BookSession() {
     const handleForFriend = (e) => {
         e.preventDefault();
 
-        navigate('/booking/for-friend', { state: celebs });
+        navigate('/booking/for-friend', { state: { celebs, user: JSON.parse(localStorage.user) } });
     }
 
 

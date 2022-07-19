@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import axios from '../../../helpers/axios';
 import showMessage from '../../../helpers/responses';
 
+
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 let BOOKING_URL;
@@ -21,6 +22,7 @@ function BookPayment() {
     const [whenSessionAccepted, setwhenSessionAccepted] = useState(true);
     const [sessionAvailability, setsessionAvailability] = useState(true);
 
+    console.log(state);
 
     let celebUrlId = state.celebs.info._id
 
@@ -48,7 +50,9 @@ function BookPayment() {
                 sessionAvailability: JSON.stringify(state.body.sessionAvailability),
                 event: state.body.event,
                 paymentMethod: state.celebs.pricing.bookingType,
-                bookingFor: state.body.bookingFor
+                bookingFor: state.body.bookingFor,
+                nickName: state.body.nickName,
+                relationship: state.body.relationship
             }
 
             var config = {
@@ -64,6 +68,7 @@ function BookPayment() {
 
                 if (state.celebs.pricing.bookingType !== "Paid") {
                     showMessage('Great!', 'Booking successfully created', '#291743');
+                    navigate('/booking-success');
                 }
                 else {
                     // Initialize Payment...
@@ -79,9 +84,8 @@ function BookPayment() {
                     const result = await axios(config);
 
                     if (result.status === 200) {
-                        // window.location.replace(result.data.data.data.authorization_url);
-
-                        window.open(result.data.data.data.authorization_url, '_blank', 'noopener,noreferrer');
+                        window.location.replace(result.data.data.data.authorization_url);
+                        // window.open(result.data.data.data.authorization_url, '_blank', 'noopener,noreferrer');
                     }
 
                 }

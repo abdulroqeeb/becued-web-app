@@ -28,6 +28,7 @@ import BookForMe from "./components/pages/main/BookForMe";
 import BookForFriend from "./components/pages/main/BookForFriend";
 import BookPayment from "./components/pages/main/BookPayment";
 import PaymentSuccess from "./components/PaymentSuccess";
+import BookingSucceess from "./components/BookingSuccess";
 
 
 function App() {
@@ -73,7 +74,7 @@ function App() {
           {/* Payment Successful */}
 
           <Route exact path="/payment-success" element={<PaymentSuccess />} />
-
+          <Route exact path="/booking-success" element={<BookingSucceess />} />
 
         </Route>
 
