@@ -53,7 +53,7 @@ function CategoryCelebs(props) {
                         <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }} title={celeb.stageName !== "NULL" ? celeb.stageName : celeb.fullname}>{celeb.stageName !== "NULL" ? truncate(celeb.stageName, 20) : truncate(celeb.fullname, 20)}</p>
                         <small style={{ position: "relative", bottom: "7%", fontSize: "10px", color: "#f3f3f3" }} title={(celeb.industry + "").split(",").join(" • ")}>{truncate((celeb.industry + "").split(",").join(" • "))}</small>
 
-                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}> ₦{celeb.pricing != null ? Number(celeb.pricing.bookingAmount).toLocaleString() : 0.00}</p>
+                        <p style={{ position: "relative", bottom: "7%", fontSize: "16px", fontWeight: "600" }}> ₦{celeb.price != null ? Number(celeb.price.bookingAmount).toLocaleString() : 0.00}</p>
                     </Link>
                 </div>
             }) : <NoRecord />}
