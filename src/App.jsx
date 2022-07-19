@@ -29,6 +29,7 @@ import BookForFriend from "./components/pages/main/BookForFriend";
 import BookPayment from "./components/pages/main/BookPayment";
 import PaymentSuccess from "./components/PaymentSuccess";
 import BookingSucceess from "./components/BookingSuccess";
+import CelebbyCategory from "./components/pages/main/CelebbyCategory";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
           <Route exact path="/notification" element={<Notification />} />
           <Route exact path="/reviews" element={<Reviews />} />
           <Route exact path="/discover" element={<Discover />} />
+          <Route exact path="/listceleb" element={<CelebbyCategory />} />
 
 
           {/* Payment Successful */}
