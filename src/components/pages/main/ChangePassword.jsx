@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../includes/Header'
-import { Link } from 'react-router-dom'
+import axios from '../../../helpers/axios';
+import showMessage from '../../../helpers/responses';
 
+
+const CHANGEPASSWORD_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/changepassword' : 'https://api-v2-staging.becued.com/api/v2/fan/changepassword'}`;
+
+const headers = {
+    'Authorization': `Bearer ${localStorage.token}`
+}
 
 function ChangePassword() {
 
@@ -13,22 +20,93 @@ function ChangePassword() {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [btnAction, setBtnAction] = useState('');
 
 
     useEffect(() => {
-        if (iconWithUpper.match(/[A-Z]/)) {
-            seticonWithUpper('fa fa-check-square-o');
+
+        if (newPassword !== '') {
+            if (newPassword.match(/[A-Z]/)) {
+                seticonWithUpper('fa fa-check-square-o');
+            }
+            else {
+                seticonWithUpper('fa fa-circle-thin');
+            }
+            if (newPassword.match(/[a-z]/)) {
+                seticonWithLower('fa fa-check-square-o');
+            }
+            else {
+                seticonWithLower('fa fa-circle-thin');
+
+            }
+            if (newPassword.match(/[!\@\#\$\%\^\&\*\(\)\-\+\=\?\/\<\>\,\.\;\:\'\"\{\}\[\]]/)) {
+                seticonSpecialChar('fa fa-check-square-o');
+            }
+            else {
+                seticonSpecialChar('fa fa-circle-thin');
+
+            }
+
+            if (iconSpecialChar === 'fa fa-check-square-o' && iconWithUpper === 'fa fa-check-square-o' && iconWithLower === 'fa fa-check-square-o') {
+                setBtnAction('');
+            }
+
+
+
         }
-        if (iconWithUpper.match(/[a-z]/)) {
-            seticonWithLower('fa fa-check-square-o');
+        else {
+            seticonWithUpper('fa fa-circle-thin');
+            seticonWithLower('fa fa-circle-thin');
+            seticonSpecialChar('fa fa-circle-thin');
+            setBtnAction('disabled');
         }
-        if (iconSpecialChar.match(/[!\@\#\$\%\^\&\*\(\)\-\+\=\?\/\<\>\,\.\;\:\'\"\{\}\[\]]/)) {
-            seticonSpecialChar('fa fa-check-square-o');
-        }
-    }, [])
+
+
+    }, [newPassword, iconSpecialChar, iconWithUpper, iconWithLower])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+
+        try {
+
+
+            if (newPassword !== confirmPassword) {
+                return showMessage('Oops!', 'Confirm Password does not match', '#a10b96');
+            }
+
+            const data = {
+                old_password: oldPassword,
+                new_password: newPassword,
+                confirm_password: confirmPassword
+            }
+
+            var config = {
+                method: 'post',
+                url: CHANGEPASSWORD_URL,
+                headers,
+                data
+            };
+
+            const response = await axios(config);
+
+            setOldPassword('');
+            setNewPassword('');
+            setConfirmPassword('');
+
+            showMessage('Great!', response.data.message, '#291743');
+
+        } catch (error) {
+
+            if (!error.response.data) {
+                showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
+            }
+            else {
+                showMessage('Oops!', error.response?.data.message, '#a10b96');
+            }
+        }
+
+
     }
 
     return (
@@ -59,7 +137,8 @@ function ChangePassword() {
                                             onChange={(e) => setOldPassword(e.target.value)}
                                             value={oldPassword}
                                             placeholder="************"
-                                            autoComplete="false" />
+                                            autoComplete="false"
+                                            required />
 
                                     </div>
                                     <div className="mb-4">
@@ -72,6 +151,8 @@ function ChangePassword() {
                                             placeholder="************"
                                             onChange={(e) => setNewPassword(e.target.value)}
                                             value={newPassword}
+                                            autoComplete="false"
+                                            required
                                         />
 
                                     </div>
@@ -85,6 +166,8 @@ function ChangePassword() {
                                             placeholder="************"
                                             onChange={(e) => setConfirmPassword(e.target.value)}
                                             value={confirmPassword}
+                                            autoComplete="false"
+                                            required
                                         />
 
                                     </div>
@@ -114,8 +197,8 @@ function ChangePassword() {
                                     <br />
                                     <br />
                                     <div className="mb-4">
-                                        <Link to={'/add-birthday'} type="button" className="btn btn-block buttonStyles"
-                                        >Confirm</Link>
+                                        <button onClick={handleSubmit} type="button" className="btn btn-block buttonStyles" disabled={btnAction}
+                                        >Confirm</button>
 
                                     </div>
 
