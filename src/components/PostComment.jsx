@@ -180,13 +180,13 @@ function mainComment(item){
                     <Avatar
                         size="lg"
                         src={item.userInfo.avatar}
-                        sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body' }}
+                        sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body', width: 60, height: 60 }}
                     />
                 </Box>
 
                 <List sx={{ color: 'white' }}>
                     <ListItem >
-                        <ListItemText primary={item.userInfo.stageName || item.userInfo.fullname} secondary={new Date(item.feeds.created_at).toDateString()} sx={{ color: 'white' }} />
+                        <ListItemText primary={item.userInfo.stageName !== "NULL" ? item.userInfo.stageName : item.userInfo.fullname} secondary={new Date(item.feeds.created_at).toDateString()} sx={{ color: 'white' }} />
                     </ListItem>
                 </List>
 
@@ -333,13 +333,13 @@ function thisPostComment(comment) {
                     <Avatar
                         size="lg"
                         src={comment.commentUserInfo.avatar}
-                        sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body' }}
+                        sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body', width: 60, height: 60 }}
                     />
                 </Box>
 
                 <List sx={{ color: 'white' }}>
                     <ListItem >
-                        <ListItemText primary={comment.commentUserInfo.stageName !== "NULL" ? comment.commentUserInfo.stageName : comment.commentUserInfo.fullname} secondary={new Date(comment.feedComments.created_at).toDateString()} sx={{ color: 'white' }} />
+                        <ListItemText primary={comment.commentUserInfo.fullname} secondary={new Date(comment.feedComments.created_at).toDateString()} sx={{ color: 'white' }} />
                     </ListItem>
                 </List>
 

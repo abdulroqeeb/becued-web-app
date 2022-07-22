@@ -118,7 +118,7 @@ function mainComment(item) {
                     <Avatar
                         size="lg"
                         src={item.userInfo.avatar}
-                        sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body' }}
+                        sx={{ p: 0.5, border: '2px solid', borderColor: 'background.body', width: 60, height: 60 }}
                     />
                 </Box>
 
