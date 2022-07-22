@@ -11,14 +11,11 @@ const headers = {
     'Authorization': `Bearer ${localStorage.token}`
 }
 
-
-function CategoryCelebs(props) {
-
-    console.log((props.name).trim());
+function CategoryRecordInfo(props) {
 
     const [celebs, setCelebs] = useState([]);
 
-    CELEB_BY_CATEGORY_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/getceleb?category=' + props.name : 'https://api-v2-staging.becued.com/api/v2/fan/getceleb?category=' + props.name}`;
+    CELEB_BY_CATEGORY_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/getceleb?category=' + props.name.name : 'https://api-v2-staging.becued.com/api/v2/fan/getceleb?category=' + props.name.name}`;
 
 
     useEffect(() => {
@@ -33,6 +30,7 @@ function CategoryCelebs(props) {
 
                 const response = await axios(config);
 
+
                 setCelebs(response.data.data);
 
             } catch (error) {
@@ -44,10 +42,10 @@ function CategoryCelebs(props) {
 
 
     return (
-        <div className="row">
+        <>
 
             {celebs.length > 0 ? celebs.map(celeb => {
-                return <div className="col-md-2">
+                return <div className="col-md-2" key={celeb._id}>
                     <Link to={`/artiste?id=${celeb._id}`} style={{ color: "#fff", textDecoration: "none" }}>
                         <img className="becuedDiscoverImages" alt="becuedcelebs" src={celeb.avatar} />
                         <p className="mt-2" style={{ fontSize: "16px", fontWeight: "600" }} title={celeb.stageName !== "NULL" ? celeb.stageName : celeb.fullname}>{celeb.stageName !== "NULL" ? truncate(celeb.stageName, 20) : truncate(celeb.fullname, 20)}</p>
@@ -58,8 +56,15 @@ function CategoryCelebs(props) {
                 </div>
             }) : <NoRecord />}
 
-        </div>
+        </>
     );
+}
+
+
+function CategoryCelebs(props) {
+    return <div className="row">
+        <CategoryRecordInfo name={props} />
+    </div>
 }
 
 

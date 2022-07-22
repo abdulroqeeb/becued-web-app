@@ -546,6 +546,10 @@ object-fit: cover;
   padding: 30px
 }
 
+.MuiListItemText-secondary {
+  color: #5f5b66 !important;
+}
+
 @media (max-width: 767px){
   .disp-large{
     display: none;

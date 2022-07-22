@@ -3,6 +3,7 @@ import axios from "../helpers/axios";
 import truncate from '../helpers/truncate';
 import showMessage from '../helpers/responses';
 import { Link } from "react-router-dom";
+import { List, ListItem, Divider, ListItemText, ListItemAvatar, Typography, Avatar } from '@mui/material';
 
 const TOFOLLOW_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/celeb-to-follow' : 'https://api-v2-staging.becued.com/api/v2/fan/celeb-to-follow'}`;
 

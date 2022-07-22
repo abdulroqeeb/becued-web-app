@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from '../../helpers/axios';
 import { Badge } from '@mui/material'
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsNoneTwoToneIcon from '@mui/icons-material/NotificationsNoneTwoTone';
-
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 
 const NOTIFY_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/notification/fan' : 'https://api-v2-staging.becued.com/api/v2/notification/fan'}`;
 
@@ -69,7 +69,7 @@ function Header() {
                                 <Link className="nav-link active text-white position-relative" aria-current="page" to="/notification">
 
                                     <Badge badgeContent={notification.length} color="error">
-                                        <NotificationsNoneTwoToneIcon color="default" />
+                                        <NotificationsNoneTwoToneIcon color="default" sx={{ fontSize: '35px' }} />
                                     </Badge>
 
                                 </Link>
@@ -77,9 +77,10 @@ function Header() {
 
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white" to={""}>
-                                    <center><img className="becuedLogo" alt="becuedLogo" src={user.avatar} /></center>
-                                </Link>
+                                <Stack className="nav-link text-white" direction="row" spacing={2}>
+                                    <Avatar alt={user.fullname} src={user.avatar} />
+                                </Stack>
+
                             </li>
                             <li className="nav-item dropdown">
                                 <Link className="nav-link text-white mt-1" to={""} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: '16px', fontWeight: '600' }}>

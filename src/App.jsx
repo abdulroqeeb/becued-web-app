@@ -30,6 +30,8 @@ import BookPayment from "./components/pages/main/BookPayment";
 import PaymentSuccess from "./components/PaymentSuccess";
 import BookingSucceess from "./components/BookingSuccess";
 import CelebbyCategory from "./components/pages/main/CelebbyCategory";
+import PostComment from "./components/PostComment";
+
 
 
 function App() {
@@ -72,9 +74,10 @@ function App() {
           <Route exact path="/discover" element={<Discover />} />
           <Route exact path="/listceleb" element={<CelebbyCategory />} />
 
+          <Route exact path="/feeds" element={<PostComment />} />
+
 
           {/* Payment Successful */}
-
           <Route exact path="/payment-success" element={<PaymentSuccess />} />
           <Route exact path="/booking-success" element={<BookingSucceess />} />
 
