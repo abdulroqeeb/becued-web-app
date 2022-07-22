@@ -124,7 +124,7 @@ function mainComment(item) {
 
                 <List sx={{ color: 'white' }}>
                     <ListItem >
-                        <ListItemText primary={item.userInfo.stageName || item.userInfo.fullname} secondary={new Date(item.feeds.created_at).toDateString()} sx={{ color: 'white' }} />
+                        <ListItemText primary={item.userInfo.stageName !== "NULL" ? item.userInfo.stageName : item.userInfo.fullname} secondary={new Date(item.feeds.created_at).toDateString()} sx={{ color: 'white' }} />
                     </ListItem>
                 </List>
 

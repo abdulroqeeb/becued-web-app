@@ -339,7 +339,7 @@ function thisPostComment(comment) {
 
                 <List sx={{ color: 'white' }}>
                     <ListItem >
-                        <ListItemText primary={comment.commentUserInfo.stageName || comment.commentUserInfo.fullname} secondary={new Date(comment.feedComments.created_at).toDateString()} sx={{ color: 'white' }} />
+                        <ListItemText primary={comment.commentUserInfo.stageName !== "NULL" ? comment.commentUserInfo.stageName : comment.commentUserInfo.fullname} secondary={new Date(comment.feedComments.created_at).toDateString()} sx={{ color: 'white' }} />
                     </ListItem>
                 </List>
 
