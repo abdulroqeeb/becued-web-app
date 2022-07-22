@@ -302,7 +302,6 @@ function mainComment(item){
 }
 
 function thisPostComment(comment) {
-    console.log(comment);
     return (
         <Card
             variant="outlined"
@@ -339,7 +338,7 @@ function thisPostComment(comment) {
 
                 <List sx={{ color: 'white' }}>
                     <ListItem >
-                        <ListItemText primary={comment.commentUserInfo.fullname} secondary={new Date(comment.feedComments.created_at).toDateString()} sx={{ color: 'white' }} />
+                        <ListItemText primary={comment.commentUserInfo.stageName !== undefined ? comment.commentUserInfo.stageName : comment.commentUserInfo.fullname} secondary={new Date(comment.feedComments.created_at).toDateString()} sx={{ color: 'white' }} />
                     </ListItem>
                 </List>
 
