@@ -1,21 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'
 import Wallpaper from '../../Wallpaper';
 import axios from '../../../helpers/axios';
 import showMessage from '../../../helpers/responses';
 
 
-const REGISTER_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/fan/web-register' : 'https://api-v2-staging.becued.com/api/v2/fan/web-register'}`;
-const VERIFY_CODE_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2/auth/verify-otp' : 'https://api-v2-staging.becued.com/api/v2/auth/verify-otp'}`;
+const BASE_URL = `${process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api/v2' : 'https://api-v2-staging.becued.com/api/v2'}`;
+
+const REGISTER_URL = `${BASE_URL}/fan/web-register`;
+
 
 const VerifyAccount = () => {
 
     const { state } = useLocation();
     const navigate = useNavigate();
 
-    const [otp, setOtp] = useState(new Array(6).fill(''));
-    const [otpValue, setOtpValue] = useState([]);
 
+    const [otp, setOtp] = useState(new Array(6).fill(''));
+    const [otpValue, setOtpValue] = useState(0);
+
+
+    useEffect(() => {
+
+        if (otp.join("").length === 6) {
+            async function verifyMyOTP() {
+
+                try {
+
+                    const data = {
+                        code: Number(otp.join(""))
+                    }
+
+                    var config = {
+                        method: 'get',
+                        url: `${BASE_URL}/verify/code?otp=${data.code}&userId=${state._id}&email=true&phone=false`,
+                    };
+
+
+                    const response = await axios(config);
+
+                    showMessage('Great!', `OTP ${response.data?.message}`, '#291743');
+
+                    navigate('/set-password', { state });
+
+                } catch (error) {
+                    if (error.response.data) {
+                        showMessage(`${error.response?.status}`, error.response?.statusText, '#a10b96');
+                    }
+                    else {
+                        showMessage('Oops!', error.message, '#a10b96');
+                    }
+                }
+
+
+
+            }
+
+            verifyMyOTP();
+        }
+
+    }, [otp, otpValue])
 
     const handleChange = async (element, index) => {
 
@@ -24,33 +68,12 @@ const VerifyAccount = () => {
 
         setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
 
-
-        // Focus on next input element
         setOtpValue(element.value);
-
-        console.log(otpValue);
-
 
         if (element.nextSibling) {
             element.nextSibling.focus();
-
         }
-        else {
-            // window.location.href = '/set-password';
 
-
-            //TODO:: Verify the OTP and Send data to next page...
-
-            const data = {
-                code: document.getElementById('verifyOtp').value
-            };
-
-            console.log(data);
-
-
-            // const response = await axios.post(REGISTER_URL, data);
-
-        }
 
 
     };
@@ -63,7 +86,9 @@ const VerifyAccount = () => {
             const data = {
                 fullname: state.fullname, email: state.email, username: state.username
             };
-            await axios.post(REGISTER_URL, data);
+            const response = await axios.post(REGISTER_URL, data);
+
+            showMessage('Great!', `Code sent to: ${response.data?.data.email}`, '#291743');
 
 
         } catch (error) {

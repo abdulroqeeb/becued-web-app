@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Wallpaper from "../../Wallpaper";
 
 
 function AccountCreated() {
+
+    const { state } = useLocation();
+    const navigate = useNavigate();
 
 
     return (
@@ -31,8 +34,8 @@ function AccountCreated() {
                         <br />
                         <br />
                         <div className="mb-4">
-                            <Link to={'/add-interest'} type="button" className="btn btn-block buttonStyles"
-                            >Add your interests</Link>
+                            <button onClick={(e) => navigate('/add-interest', {state})} type="button" className="btn btn-block buttonStyles"
+                            >Add your interests</button>
 
                         </div>
 

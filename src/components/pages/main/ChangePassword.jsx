@@ -11,6 +11,7 @@ const headers = {
 }
 
 function ChangePassword() {
+    
 
     const [iconSpecialChar, seticonSpecialChar] = useState('fa fa-circle-thin');
     const [iconWithUpper, seticonWithUpper] = useState('fa fa-circle-thin');
